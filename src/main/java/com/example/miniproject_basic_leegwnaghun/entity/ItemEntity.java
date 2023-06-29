@@ -11,12 +11,14 @@ public class ItemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = false)
+    @Column(nullable = false)
     private String writer;
     private String password;
     private String title;
     private String content;
     private String minPrice;
+
+    @Column
     private String status;
     private String image;
 }

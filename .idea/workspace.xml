@@ -5,14 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 초기 설정">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/controller/ItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/dto/ItemDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/dto/ResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/entity/ItemEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/repository/ItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/service/ItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/miniproject_basic_leegwnaghun/controller/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/miniproject_basic_leegwnaghun/controller/ItemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/miniproject_basic_leegwnaghun/dto/ItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/miniproject_basic_leegwnaghun/dto/ItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/miniproject_basic_leegwnaghun/entity/ItemEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/miniproject_basic_leegwnaghun/entity/ItemEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/miniproject_basic_leegwnaghun/service/ItemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/miniproject_basic_leegwnaghun/service/ItemService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ItemController.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ItemDto.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ItemService.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/entity/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/entity/ItemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miniproject_basic_leegwnaghun/service/ItemService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,24 +58,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/코딩공부/멋사 5기/개인프로젝트/MiniProject_Basic_LeeGwnaghun",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/코딩공부/멋사 5기/개인프로젝트/MiniProject_Basic_LeeGwnaghun&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;542fde2dd72aa5cc356927282abb5c9a&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.miniproject_basic_leegwnaghun.repository" />
@@ -91,6 +110,9 @@
       <updated>1688011552502</updated>
       <workItem from="1688011553900" duration="1374000" />
       <workItem from="1688015096928" duration="3456000" />
+      <workItem from="1688018578072" duration="3440000" />
+      <workItem from="1688022038969" duration="66000" />
+      <workItem from="1688022132068" duration="1608000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 초기 설정">
       <created>1688014641050</created>
