@@ -6,6 +6,8 @@ import com.example.miniproject_basic_leegwnaghun.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -39,7 +41,18 @@ public class ItemController {
 
     // 하나만 조회
     @GetMapping("/{id}")
-    public ItemDto read(@PathVariable("id") Long id) {
+    public ItemDto read(
+            @PathVariable("id") Long id
+    ) {
         return service.readItem(id);
+    }
+
+    // PUT /items/{id}
+    @PutMapping("/{id}")
+    public ItemDto update(
+            @PathVariable("id") Long id,
+            @RequestBody ItemDto itemDto
+    ) {
+        return service.updateItem(id, itemDto.getPassword(), itemDto);
     }
 }
