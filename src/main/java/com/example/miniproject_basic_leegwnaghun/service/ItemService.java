@@ -83,8 +83,7 @@ public class ItemService {
         ItemEntity itemEntity = optionalItem.get();
         // 패스워드 저장
         String storedPw = itemEntity.getPassword();
-        // 실패 시 메세지
-        ResponseDto response = new ResponseDto();
+
 
         if (password.equals(storedPw)) {
         itemEntity.setTitle(dto.getTitle());
@@ -96,48 +95,70 @@ public class ItemService {
     }
 
     // updateImage: 이미지 첨부
-    public ItemDto updateItemImage(Long id, MultipartFile itemImage) {
+    public ItemDto updateItemImage(Long id, String password, MultipartFile itemImage) {
         // 물품 존재 확인
         Optional<ItemEntity> optionalItem = repository.findById(id);
         if (optionalItem.isEmpty()) throw new ItemNotFoundException();
 
-        // 업로드위치
-        // media/{userId}/image
-        String itemImageDir = String.format("media/%d/", id); // 폴더명
-        try { // 읽고 쓰는데서 발생할 수 있는 예외 처리
-            Files.createDirectories(Path.of(itemImageDir));
-        } catch (IOException e) {
-            log.error(e.getMessage());
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        // 확장자를 포함한 이미지 이름
-        String originalFilename = itemImage.getOriginalFilename();
-        String[] fileNameSplit = originalFilename.split("\\.");
-        String extension = fileNameSplit[fileNameSplit.length - 1];
-        String itemImageFilename = "item." + extension;
-        log.info(itemImageFilename);
-
-        // 폴더와 이미지 이름을 포함한 파일 경로
-        String itemImagePath = itemImageDir + itemImageFilename; // 파일 경로
-        log.info(itemImagePath);
-
-        // MultipartFile을 저장
-        try {
-            itemImage.transferTo(Path.of(itemImagePath));
-        } catch (IOException e) {
-            log.error(e.getMessage());
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        // ItemEntity 업데이트
-        log.info(String.format("/static/%d/%s", id, itemImageFilename));
-
         ItemEntity itemEntity = optionalItem.get();
-        itemEntity.setImage(String.format("/static/%d%s", id, itemImageFilename));
-        return ItemDto.fromEntity(repository.save(itemEntity));
+        // 패스워드 저장
+        String storedPw = itemEntity.getPassword();
+
+
+        if (password.equals(storedPw)) {
+            // 업로드위치
+            // media/{userId}/image
+            String itemImageDir = String.format("media/%d/", id); // 폴더명
+            try { // 읽고 쓰는데서 발생할 수 있는 예외 처리
+                Files.createDirectories(Path.of(itemImageDir));
+            } catch (IOException e) {
+                log.error(e.getMessage());
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+            // 확장자를 포함한 이미지 이름
+            String originalFilename = itemImage.getOriginalFilename();
+            String[] fileNameSplit = originalFilename.split("\\.");
+            String extension = fileNameSplit[fileNameSplit.length - 1];
+            String itemImageFilename = "item." + extension;
+            log.info(itemImageFilename);
+
+            // 폴더와 이미지 이름을 포함한 파일 경로
+            String itemImagePath = itemImageDir + itemImageFilename; // 파일 경로
+            log.info(itemImagePath);
+
+            // MultipartFile을 저장
+            try {
+                itemImage.transferTo(Path.of(itemImagePath));
+            } catch (IOException e) {
+                log.error(e.getMessage());
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+            // ItemEntity 업데이트
+            log.info(String.format("/static/%d/%s", id, itemImageFilename));
+
+            itemEntity.setImage(String.format("/static/%d%s", id, itemImageFilename));
+            return ItemDto.fromEntity(repository.save(itemEntity));
+        } else throw new IncorrectPasswordException();
     }
 
+    // Delete
+    // 글삭제
+    public void deleteItem(Long id, String password) {
+        Optional<ItemEntity> optionalItem = repository.findById(id);
+        // 찾지 못하면 물품이 없다고 표시
+        if (optionalItem.isEmpty()) throw new ItemNotFoundException();
+
+        ItemEntity itemEntity = optionalItem.get();
+        // 패스워드 저장
+        String storedPw = itemEntity.getPassword();
+
+
+        if (password.equals(storedPw)) {
+            repository.deleteById(id);
+        } else throw new IncorrectPasswordException();
+    }
 
 }
 

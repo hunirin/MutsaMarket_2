@@ -26,9 +26,6 @@ public class ItemController {
         log.info(itemDto.toString());
         ResponseDto response = new ResponseDto();
         service.createItem(itemDto);
-
-
-
         response.setMessage("등록이 완료되었습니다.");
         return response;
     }
@@ -53,11 +50,14 @@ public class ItemController {
 
     // PUT /items/{id}
     @PutMapping("/{id}")
-    public ItemDto update(
+    public ResponseDto update(
             @PathVariable("id") Long id,
             @RequestBody ItemDto itemDto
     ) {
-        return service.updateItem(id, itemDto.getPassword(), itemDto);
+        service.updateItem(id, itemDto.getPassword(), itemDto);
+        ResponseDto response = new ResponseDto();
+        response.setMessage("물품이 수정되었습니다.");
+        return response;
     }
 
     // PUT /users/{id}/image
@@ -66,10 +66,28 @@ public class ItemController {
             value = "/{id}/image",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
-    public ItemDto itemImage(
+    public ResponseDto itemImage(
             @PathVariable("id") Long id,
+            @RequestBody ItemDto itemDto,
+            @RequestParam("writer") String writer,
+            @RequestParam("password") String password,
             @RequestParam("image") MultipartFile itemImage
     ) {
-        return service.updateItemImage(id, itemImage);
+        service.updateItemImage(id, itemDto.getPassword(), itemImage);
+        ResponseDto response = new ResponseDto();
+        response.setMessage("이미지가 등록되었습니다.");
+        return response;
+    }
+
+    // DELETE /users/{id}
+    @DeleteMapping("/{id}")
+    public ResponseDto delete(
+            @PathVariable("id") Long id,
+            @RequestBody ItemDto itemDto
+    ) {
+        service.deleteItem(id, itemDto.getPassword());
+        ResponseDto response = new ResponseDto();
+        response.setMessage("물품을 삭제했습니다.");
+        return response;
     }
 }
