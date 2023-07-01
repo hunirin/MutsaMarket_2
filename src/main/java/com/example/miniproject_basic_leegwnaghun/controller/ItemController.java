@@ -7,8 +7,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RestController
@@ -24,6 +26,8 @@ public class ItemController {
         log.info(itemDto.toString());
         ResponseDto response = new ResponseDto();
         service.createItem(itemDto);
+
+
 
         response.setMessage("등록이 완료되었습니다.");
         return response;
@@ -54,5 +58,18 @@ public class ItemController {
             @RequestBody ItemDto itemDto
     ) {
         return service.updateItem(id, itemDto.getPassword(), itemDto);
+    }
+
+    // PUT /users/{id}/image
+    // 물품 이미지 추가
+    @PutMapping(
+            value = "/{id}/image",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE
+    )
+    public ItemDto itemImage(
+            @PathVariable("id") Long id,
+            @RequestParam("image") MultipartFile itemImage
+    ) {
+        return service.updateItemImage(id, itemImage);
     }
 }

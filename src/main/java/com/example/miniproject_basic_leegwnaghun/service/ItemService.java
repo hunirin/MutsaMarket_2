@@ -17,8 +17,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -38,11 +42,12 @@ public class ItemService {
         newItem.setWriter(dto.getWriter());
         newItem.setPassword(dto.getPassword());
         newItem.setMinPrice(dto.getMinPrice());
+        newItem.setStatus("판매중");
         return ItemDto.fromEntity(repository.save(newItem));
     }
 
     // GET
-    // readAll: 페이지 단위로 조회
+    // readAll
 //    public List<ItemDto> readItemAll() {
 //        List<ItemDto> itemList = new ArrayList<>();
 //        for (ItemEntity entity: repository.findAll()) {
@@ -51,6 +56,7 @@ public class ItemService {
 //        return itemList;
 //    }
 
+    // 페이지 단위로 조회
     // 20개씩 나누어 0번 페이지부터 요청
     public Page<ItemDto> readItemPaged(Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(
@@ -87,9 +93,51 @@ public class ItemService {
         ItemDto.fromEntity(repository.save(itemEntity));
         return ItemDto.fromEntity(itemEntity);
         } else throw new IncorrectPasswordException();
-
-
     }
+
+    // updateImage: 이미지 첨부
+    public ItemDto updateItemImage(Long id, MultipartFile itemImage) {
+        // 물품 존재 확인
+        Optional<ItemEntity> optionalItem = repository.findById(id);
+        if (optionalItem.isEmpty()) throw new ItemNotFoundException();
+
+        // 업로드위치
+        // media/{userId}/image
+        String itemImageDir = String.format("media/%d/", id); // 폴더명
+        try { // 읽고 쓰는데서 발생할 수 있는 예외 처리
+            Files.createDirectories(Path.of(itemImageDir));
+        } catch (IOException e) {
+            log.error(e.getMessage());
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        // 확장자를 포함한 이미지 이름
+        String originalFilename = itemImage.getOriginalFilename();
+        String[] fileNameSplit = originalFilename.split("\\.");
+        String extension = fileNameSplit[fileNameSplit.length - 1];
+        String itemImageFilename = "item." + extension;
+        log.info(itemImageFilename);
+
+        // 폴더와 이미지 이름을 포함한 파일 경로
+        String itemImagePath = itemImageDir + itemImageFilename; // 파일 경로
+        log.info(itemImagePath);
+
+        // MultipartFile을 저장
+        try {
+            itemImage.transferTo(Path.of(itemImagePath));
+        } catch (IOException e) {
+            log.error(e.getMessage());
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        // ItemEntity 업데이트
+        log.info(String.format("/static/%d/%s", id, itemImageFilename));
+
+        ItemEntity itemEntity = optionalItem.get();
+        itemEntity.setImage(String.format("/static/%d%s", id, itemImageFilename));
+        return ItemDto.fromEntity(repository.save(itemEntity));
+    }
+
 
 }
 
