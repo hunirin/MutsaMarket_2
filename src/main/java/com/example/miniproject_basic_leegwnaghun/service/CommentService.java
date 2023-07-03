@@ -110,10 +110,6 @@ public class CommentService {
             commentRepository.deleteById(commentId);
         } else throw new IncorrectPasswordException();
 
-//        CommentEntity comment = optionalComment.get();
-//        if (!id.equals(comment.getcommentId()))
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 //
-//        commentRepository.deleteById(commentId);
     }
 }

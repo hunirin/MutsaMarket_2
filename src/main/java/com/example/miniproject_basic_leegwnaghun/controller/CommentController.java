@@ -58,9 +58,9 @@ public class CommentController {
     public ResponseDto delete(
             @PathVariable("id") Long id,
             @PathVariable("commentId") Long commentId,
-            @RequestBody ItemDto itemDto
+            @RequestBody CommentDto dto
     ) {
-        service.deleteComment(id, itemDto.getPassword(), commentId);
+        service.deleteComment(id, dto.getPassword(), commentId);
         ResponseDto response = new ResponseDto();
         response.setMessage("물품을 삭제했습니다.");
         return response;
