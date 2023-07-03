@@ -1,9 +1,11 @@
 package com.example.miniproject_basic_leegwnaghun.dto;
 
 import com.example.miniproject_basic_leegwnaghun.entity.ItemEntity;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemDto {
     private Long id;
     private String writer;
@@ -26,4 +28,5 @@ public class ItemDto {
         dto.setImage(entity.getImage());
         return dto;
     }
+
 }

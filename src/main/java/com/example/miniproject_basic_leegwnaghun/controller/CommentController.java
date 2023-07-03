@@ -65,4 +65,18 @@ public class CommentController {
         response.setMessage("물품을 삭제했습니다.");
         return response;
     }
+
+    // PUT
+    // reply
+    @PutMapping("/{commentId}/reply")
+    public ResponseDto updateReply(
+            @PathVariable("id") Long id,
+            @PathVariable("commentId") Long commentId,
+            @RequestBody CommentDto dto
+    ) {
+        service.updateReply(id, dto.getPassword(), commentId, dto);
+        ResponseDto response = new ResponseDto();
+        response.setMessage("댓글에 답변이 추가되었습니다.");
+        return response;
+    }
 }

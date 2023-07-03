@@ -1,5 +1,6 @@
 package com.example.miniproject_basic_leegwnaghun.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,10 +14,13 @@ public class ItemEntity {
 
     @Column(nullable = false)
     private String writer;
-    private String password;
     private String title;
     private String content;
     private String minPrice;
+
+    @JsonIgnore
+    @Column(nullable = false)
+    private String password;
 
     @Column
     private String status;

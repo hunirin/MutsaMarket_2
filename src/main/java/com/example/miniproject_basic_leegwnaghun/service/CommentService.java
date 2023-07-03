@@ -1,7 +1,7 @@
 package com.example.miniproject_basic_leegwnaghun.service;
 
 
-import com.example.miniproject_basic_leegwnaghun.dto.ItemDto;
+
 import com.example.miniproject_basic_leegwnaghun.entity.ItemEntity;
 import com.example.miniproject_basic_leegwnaghun.exceptions.IncorrectPasswordException;
 import com.example.miniproject_basic_leegwnaghun.exceptions.ItemNotFoundException;
@@ -18,8 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,6 +53,8 @@ public class CommentService {
 //        return commentList;
 //    }
 
+    // GET
+    // Page 단위로 조회
     public Page<CommentDto> readCommentPaged(Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(
                 pageNum, pageSize, Sort.by("commentId").ascending());
@@ -62,7 +62,6 @@ public class CommentService {
         Page<CommentDto> commentDtoPage = commentEntityPage.map(CommentDto::fromEntity);
         return commentDtoPage;
     }
-
 
     // PUT
     // update: 글 수정
@@ -109,7 +108,34 @@ public class CommentService {
         if (password.equals(storedPw)) {
             commentRepository.deleteById(commentId);
         } else throw new IncorrectPasswordException();
-
-//
     }
+
+    // Reply
+    // 답글
+    public CommentDto updateReply(
+            Long id,
+            String password,
+            Long commentId,
+            CommentDto dto
+    ) {
+        Optional<ItemEntity> optionalItem
+                = itemRepository.findById(commentId);
+
+        ItemEntity itemEntity
+                = optionalItem.orElseThrow(() -> new ItemNotFoundException());
+        String storedPw = itemEntity.getPassword();
+
+        if (password.equals(storedPw)) {
+            Optional<CommentEntity> optionalComment = commentRepository.findById(id);
+            CommentEntity comment = optionalComment.orElseThrow(() -> new ItemNotFoundException());
+
+            // 대상 댓글이 대상 게시글의 댓글이 맞는지
+            if (!id.equals(comment.getCommentId()))
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+
+            comment.setReply(dto.getReply());
+            return CommentDto.fromEntity(commentRepository.save(comment));
+        } else throw new IncorrectPasswordException();
+    }
+
 }

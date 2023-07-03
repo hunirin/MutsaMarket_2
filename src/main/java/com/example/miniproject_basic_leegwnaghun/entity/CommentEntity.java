@@ -1,5 +1,6 @@
 package com.example.miniproject_basic_leegwnaghun.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,6 +15,10 @@ public class CommentEntity {
 
     @Column(nullable = false)
     private String writer;
-    private String password;
     private String content;
+    private String reply;
+
+    @JsonIgnore
+    @Column(nullable = false)
+    private String password;
 }
