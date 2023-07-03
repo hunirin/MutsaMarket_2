@@ -2,12 +2,10 @@ package com.example.miniproject_basic_leegwnaghun.service;
 
 
 import com.example.miniproject_basic_leegwnaghun.dto.ItemDto;
-import com.example.miniproject_basic_leegwnaghun.dto.ResponseDto;
 import com.example.miniproject_basic_leegwnaghun.entity.ItemEntity;
 import com.example.miniproject_basic_leegwnaghun.exceptions.IncorrectPasswordException;
 import com.example.miniproject_basic_leegwnaghun.exceptions.ItemNotFoundException;
 import com.example.miniproject_basic_leegwnaghun.repository.ItemRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -15,7 +13,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,8 +20,6 @@ import org.springframework.web.server.ResponseStatusException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
