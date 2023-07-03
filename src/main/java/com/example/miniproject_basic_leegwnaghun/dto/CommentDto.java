@@ -15,9 +15,18 @@ public class CommentDto {
     public static CommentDto fromEntity(CommentEntity entity){
         CommentDto dto = new CommentDto();
         dto.setId(entity.getId());
-        dto.setCommentId(entity.getArticleId());
+        dto.setCommentId(entity.getCommentId());
         dto.setWriter(entity.getWriter());
+        dto.setPassword(entity.getPassword());
         dto.setContent(entity.getContent());
         return dto;
     }
+
+//    public Long getId() {
+//        return null;
+//    }
+//
+//    public String getPassword() {
+//        return null;
+//    }
 }

@@ -8,6 +8,7 @@ import com.example.miniproject_basic_leegwnaghun.dto.ResponseDto;
 import com.example.miniproject_basic_leegwnaghun.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +20,8 @@ import java.util.List;
 public class CommentController {
     private final CommentService service;
 
-    // 게시글 작성
-    // POST /articles/{id}/comments
+    // POST
+    // 댓글 작성
     @PostMapping
     public CommentDto create(
             @PathVariable("id") Long id,
@@ -29,14 +30,14 @@ public class CommentController {
         return service.createComment(id, dto);
     }
 
-    // todo 게시글 댓글 전체 조회
-    // GET /articles/{id}/comments
-    // 반환값 인자 및 필요 어노테이션
+    // GET
+    // 댓글 전체 조회
     @GetMapping
-    public List<CommentDto> readAll(
-            @PathVariable("id") Long id
+    public Page<CommentDto> readAll(
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "limit", defaultValue = "20") Integer limit
     ) {
-        return service.readCommentAll(id);
+        return service.readCommentPaged(page, limit);
     }
 
     // PUT

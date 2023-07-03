@@ -9,8 +9,11 @@ import lombok.Data;
 public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private Long commentId;
+    private Long id;
+
+    @Column(nullable = false)
     private String writer;
+    private String password;
     private String content;
 }
