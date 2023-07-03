@@ -68,10 +68,10 @@ public class ItemController {
     )
     public ResponseDto itemImage(
             @PathVariable("id") Long id,
-            @RequestBody ItemDto itemDto,
-            @RequestParam("writer") String writer,
-            @RequestParam("password") String password,
-            @RequestParam("image") MultipartFile itemImage
+            // @RequestPart로 image는 파일로,
+            // writer와 password는 Content type을 application/json으로 해서 받음
+            @RequestPart(value = "itemDto")ItemDto itemDto,
+            @RequestPart(value = "image", required = false) MultipartFile itemImage
     ) {
         service.updateItemImage(id, itemDto.getPassword(), itemImage);
         ResponseDto response = new ResponseDto();
