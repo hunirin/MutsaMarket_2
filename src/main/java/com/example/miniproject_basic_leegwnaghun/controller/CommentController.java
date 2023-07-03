@@ -44,11 +44,10 @@ public class CommentController {
     @PutMapping("/{commentId}")
     public ResponseDto update(
             @PathVariable("id") Long id,
-            @PathVariable("commentID") Long commentId,
-            @RequestBody ItemDto itemDto,
+            @PathVariable("commentId") Long commentId,
             @RequestBody CommentDto dto
     ) {
-        service.updateComment(id, itemDto.getPassword(), commentId, dto);
+        service.updateComment(id, dto.getPassword(), commentId, dto);
         ResponseDto response = new ResponseDto();
         response.setMessage("댓글이 수정되었습니다.");
         return response;

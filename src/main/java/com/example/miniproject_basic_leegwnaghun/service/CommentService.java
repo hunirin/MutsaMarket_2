@@ -72,12 +72,11 @@ public class CommentService {
             Long commentId,
             CommentDto dto
     ) {
-        Optional<ItemEntity> optionalItem = itemRepository.findById(id);
         Optional<CommentEntity> optionalComment
                 = commentRepository.findById(commentId);
 
-        ItemEntity itemEntity = optionalItem.get();
-        String storedPw = itemEntity.getPassword();
+        CommentEntity commentEntity = optionalComment.get();
+        String storedPw = commentEntity.getPassword();
 
         if (password.equals(storedPw)) {
             if (optionalComment.isEmpty())
@@ -103,14 +102,9 @@ public class CommentService {
         if (optionalComment.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
-
-        Optional<ItemEntity> optionalItem = itemRepository.findById(id);
-        // 찾지 못하면 물품이 없다고 표시
-        if (optionalItem.isEmpty()) throw new ItemNotFoundException();
-
-        ItemEntity itemEntity = optionalItem.get();
+        CommentEntity commentEntity = optionalComment.get();
         // 패스워드 저장
-        String storedPw = itemEntity.getPassword();
+        String storedPw = commentEntity.getPassword();
 
         if (password.equals(storedPw)) {
             commentRepository.deleteById(commentId);
