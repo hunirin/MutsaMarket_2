@@ -40,19 +40,6 @@ public class CommentService {
         return CommentDto.fromEntity(newComment);
     }
 
-
-//    // GET
-//    // readAll
-//    public List<CommentDto> readCommentAll(Long id) {
-//        List<CommentEntity> commentEntities
-//                = commentRepository.findAllByCommentId(id);
-//        List<CommentDto> commentList = new ArrayList<>();
-//        for (CommentEntity entity: commentEntities) {
-//            commentList.add(CommentDto.fromEntity(entity));
-//        }
-//        return commentList;
-//    }
-
     // GET
     // Page 단위로 조회
     public Page<CommentDto> readCommentPaged(Integer pageNum, Integer pageSize) {
@@ -64,9 +51,8 @@ public class CommentService {
     }
 
     // PUT
-    // update: 글 수정
+    // update: 댓글 수정
     public CommentDto updateComment(
-            Long id,
             String password,
             Long commentId,
             CommentDto dto
@@ -74,18 +60,12 @@ public class CommentService {
         Optional<CommentEntity> optionalComment
                 = commentRepository.findById(commentId);
 
-        CommentEntity commentEntity = optionalComment.get();
-        String storedPw = commentEntity.getPassword();
+        CommentEntity comment= optionalComment.get();
+        String storedPw = comment.getPassword();
 
         if (password.equals(storedPw)) {
             if (optionalComment.isEmpty())
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-
-            CommentEntity comment = optionalComment.get();
-
-            // 대상 댓글이 대상 게시글의 댓글이 맞는지
-            if (!id.equals(comment.getCommentId()))
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 
             comment.setContent(dto.getContent());
             comment.setWriter(dto.getWriter());
@@ -95,7 +75,7 @@ public class CommentService {
 
     // Delete
     // 글 삭제
-    public void deleteComment(Long id, String password, Long commentId) {
+    public void deleteComment(String password, Long commentId) {
         Optional<CommentEntity> optionalComment
                 = commentRepository.findById(commentId);
         if (optionalComment.isEmpty())
