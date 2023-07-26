@@ -1,6 +1,7 @@
-package com.example.project.entity;
+package com.example.project.dto;
 
 
+import com.example.project.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,17 +10,21 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomUserDetails implements UserDetails {
+public class UserDto implements UserDetails {
     @Getter
     private Long id;
     private String username;
     private String password;
     @Getter
     private String email;
+
+    @Getter
+    private String token;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -35,6 +40,7 @@ public class CustomUserDetails implements UserDetails {
     public String getUsername() {
         return this.username;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -56,12 +62,13 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 
-    public static CustomUserDetails fromEntity(UserEntity entity) {
-        return CustomUserDetails.builder()
+    public static UserDto fromEntity(UserEntity entity) {
+        return UserDto.builder()
                 .id(entity.getId())
                 .username(entity.getUsername())
                 .password(entity.getPassword())
                 .email(entity.getEmail())
+                .token(entity.getToken())
                 .build();
     }
 
@@ -70,6 +77,7 @@ public class CustomUserDetails implements UserDetails {
         entity.setUsername(username);
         entity.setPassword(password);
         entity.setEmail(email);
+        entity.setToken(token);
         return entity;
     }
 

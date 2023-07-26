@@ -14,5 +14,9 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String username;
     private String password;
+
+    @Column(nullable = true)
     private String email;
+
+    private String token;
 }

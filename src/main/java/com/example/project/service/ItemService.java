@@ -42,15 +42,6 @@ public class ItemService {
     }
 
     // GET
-    // readAll
-//    public List<ItemDto> readItemAll() {
-//        List<ItemDto> itemList = new ArrayList<>();
-//        for (ItemEntity entity: repository.findAll()) {
-//            itemList.add(ItemDto.fromEntity(entity));
-//        }
-//        return itemList;
-//    }
-
     // 페이지 단위로 조회
     // 20개씩 나누어 0번 페이지부터 요청
     public Page<ItemDto> readItemPaged(Integer pageNum, Integer pageSize) {

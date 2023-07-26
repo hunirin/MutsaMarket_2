@@ -1429,123 +1429,158 @@
     <table id="507" parent="173" name="sqlite_master">
       <System>1</System>
     </table>
-    <column id="508" parent="504" name="comment_id">
+    <table id="508" parent="173" name="users"/>
+    <column id="509" parent="504" name="comment_id">
       <DasType>integer|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="509" parent="504" name="id">
+    <column id="510" parent="504" name="id">
       <DasType>bigint|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="510" parent="504" name="content">
+    <column id="511" parent="504" name="content">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="511" parent="504" name="password">
+    <column id="512" parent="504" name="password">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="512" parent="504" name="reply">
+    <column id="513" parent="504" name="reply">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="513" parent="504" name="writer">
+    <column id="514" parent="504" name="writer">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <key id="514" parent="504">
+    <key id="515" parent="504">
       <ColNames>comment_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="515" parent="505" name="id">
+    <column id="516" parent="505" name="id">
       <DasType>integer|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="516" parent="505" name="content">
+    <column id="517" parent="505" name="content">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="517" parent="505" name="image">
+    <column id="518" parent="505" name="image">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="518" parent="505" name="min_price">
+    <column id="519" parent="505" name="min_price">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="519" parent="505" name="password">
+    <column id="520" parent="505" name="password">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="520" parent="505" name="status">
+    <column id="521" parent="505" name="status">
       <DasType>varchar(255)|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="521" parent="505" name="title">
+    <column id="522" parent="505" name="title">
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="522" parent="505" name="writer">
+    <column id="523" parent="505" name="writer">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <key id="523" parent="505">
+    <key id="524" parent="505">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="524" parent="506" name="id">
+    <column id="525" parent="506" name="id">
       <DasType>bigint|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="525" parent="506" name="proposal_id">
+    <column id="526" parent="506" name="proposal_id">
       <DasType>integer|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="526" parent="506" name="password">
+    <column id="527" parent="506" name="password">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="527" parent="506" name="status">
+    <column id="528" parent="506" name="status">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="528" parent="506" name="suggested_price">
+    <column id="529" parent="506" name="suggested_price">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="529" parent="506" name="writer">
+    <column id="530" parent="506" name="writer">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <key id="530" parent="506">
+    <key id="531" parent="506">
       <ColNames>proposal_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="531" parent="507" name="type">
+    <column id="532" parent="507" name="type">
       <DasType>TEXT|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="532" parent="507" name="name">
+    <column id="533" parent="507" name="name">
       <DasType>TEXT|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="533" parent="507" name="tbl_name">
+    <column id="534" parent="507" name="tbl_name">
       <DasType>TEXT|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="534" parent="507" name="rootpage">
+    <column id="535" parent="507" name="rootpage">
       <DasType>INT|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="535" parent="507" name="sql">
+    <column id="536" parent="507" name="sql">
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
     </column>
+    <column id="537" parent="508" name="id">
+      <DasType>integer|0s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="538" parent="508" name="email">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="539" parent="508" name="password">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="540" parent="508" name="token">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="541" parent="508" name="username">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <index id="542" parent="508" name="sqlite_autoindex_users_1">
+      <ColNames>username</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="543" parent="508">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="544" parent="508">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_users_1</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

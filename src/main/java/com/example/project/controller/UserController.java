@@ -1,70 +1,77 @@
 package com.example.project.controller;
 
 
-import com.example.project.entity.CustomUserDetails;
+import com.example.project.dto.ResponseDto;
+import com.example.project.dto.UserDto;
+//import com.example.project.service.JpaUserDetailsManager;
+import com.example.project.jwt.JwtTokenUtils;
+import com.example.project.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
-import static org.springframework.http.codec.multipart.DefaultPartEvents.form;
 
 @Slf4j
 @Controller
 @RequestMapping("users")
 public class UserController {
-
-    @GetMapping("/login")
-    public String loginForm() {
-        return "login-form";
-    }
-
-    @GetMapping("/my-profile")
-    public String myProfile(
-            Authentication authentication
-    ) {
-        CustomUserDetails userDetails
-                = (CustomUserDetails) authentication.getPrincipal();
-        log.info(userDetails.getUsername());
-        log.info(userDetails.getEmail());
-        return "my-profile";
-    }
-
-    @GetMapping("/register")
-    public String registerForm() {
-        return "register-form";
-    }
-
     // 의존성 주입
+    private final UserService service;
 
-    private final UserDetailsManager manager;
-    private final PasswordEncoder passwordEncoder;
-
-    public UserController(UserDetailsManager manager, PasswordEncoder passwordEncoder) {
-        this.manager = manager;
-        this.passwordEncoder = passwordEncoder;
+    public UserController(UserService service) {
+        this.service = service;
     }
+
+
+//    @GetMapping("/login")
+//    public ResponseDto login(
+//            @RequestBody UserDto userDto
+//            ) {
+//        ResponseDto response = new ResponseDto();
+//        response.setMessage("로그인 되었습니다.");
+//        return response;
+//    }
+
+    @PostMapping("/login")
+    public ResponseDto loginJwt(@RequestBody UserDto userDto) {
+        log.info(userDto.toString());
+        ResponseDto response = new ResponseDto();
+        UserDto authenticatedUser = service.loginJwt(userDto.getUsername(), userDto.getPassword(), userDto);
+        response.setMessage("로그인 되었습니다. \n token: " + authenticatedUser.getToken());
+        return response;
+    }
+
+//    @GetMapping("/my-profile")
+//    public String myProfile(
+//            Authentication authentication
+//    ) {
+//        UserDto userDetails
+//                = (UserDto) authentication.getPrincipal();
+//        log.info(userDetails.getUsername());
+//        log.info(userDetails.getEmail());
+//        return "my-profile";
+//    }
+
+//    @GetMapping("/register")
+//    public String registerForm() {
+//        return "register-form";
+//    }
+
+
 
     @PostMapping("/register")
-    public String registerPost(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password,
-            @RequestParam("password-check") String passwordCheck
+    public ResponseDto registerPost(
+            @RequestBody UserDto userDto
     ) {
-        if (password.equals(passwordCheck)) {
-            log.info("password match!");
-            manager.createUser(CustomUserDetails.builder()
-                    .username(username)
-                    .password(passwordEncoder.encode(password))
-                    .build());
-            return "redirect:/users/login";
-        }
-        log.warn("패스워드가 일치하지 않습니다.");
-        return "redirect:/user/register?error";
+        log.info(userDto.toString());
+        ResponseDto response = new ResponseDto();
+        service.createUser(userDto);
+        response.setMessage("회원 가입 되었습니다.");
+        return response;
     }
 }
