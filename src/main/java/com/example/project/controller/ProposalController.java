@@ -1,10 +1,9 @@
-package com.example.miniproject_basic_leegwnaghun.controller;
+package com.example.project.controller;
 
 
-import com.example.miniproject_basic_leegwnaghun.dto.CommentDto;
-import com.example.miniproject_basic_leegwnaghun.dto.ProposalDto;
-import com.example.miniproject_basic_leegwnaghun.dto.ResponseDto;
-import com.example.miniproject_basic_leegwnaghun.service.ProposalService;
+import com.example.project.dto.ProposalDto;
+import com.example.project.dto.ResponseDto;
+import com.example.project.service.ProposalService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,7 @@
-package com.example.miniproject_basic_leegwnaghun.dto;
+package com.example.project.dto;
 
 
-import com.example.miniproject_basic_leegwnaghun.entity.ProposalEntity;
+import com.example.project.entity.ProposalEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 

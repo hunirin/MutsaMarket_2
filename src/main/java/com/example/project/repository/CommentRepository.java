@@ -1,6 +1,6 @@
-package com.example.miniproject_basic_leegwnaghun.repository;
+package com.example.project.repository;
 
-import com.example.miniproject_basic_leegwnaghun.entity.CommentEntity;
+import com.example.project.entity.CommentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

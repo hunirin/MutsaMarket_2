@@ -1,4 +1,4 @@
-package com.example.miniproject_basic_leegwnaghun.exceptions;
+package com.example.project.exceptions;
 
 public class IncorrectPasswordException extends Status400Exception {
     public IncorrectPasswordException() {

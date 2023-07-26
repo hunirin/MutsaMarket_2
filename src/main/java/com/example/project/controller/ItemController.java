@@ -1,14 +1,12 @@
-package com.example.miniproject_basic_leegwnaghun.controller;
+package com.example.project.controller;
 
-import com.example.miniproject_basic_leegwnaghun.dto.ItemDto;
-import com.example.miniproject_basic_leegwnaghun.dto.ResponseDto;
-import com.example.miniproject_basic_leegwnaghun.service.ItemService;
+import com.example.project.dto.ItemDto;
+import com.example.project.dto.ResponseDto;
+import com.example.project.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,13 +1,13 @@
-package com.example.miniproject_basic_leegwnaghun.service;
+package com.example.project.service;
 
-import com.example.miniproject_basic_leegwnaghun.dto.ProposalDto;
-import com.example.miniproject_basic_leegwnaghun.entity.CommentEntity;
-import com.example.miniproject_basic_leegwnaghun.entity.ItemEntity;
-import com.example.miniproject_basic_leegwnaghun.entity.ProposalEntity;
-import com.example.miniproject_basic_leegwnaghun.exceptions.IncorrectPasswordException;
-import com.example.miniproject_basic_leegwnaghun.repository.CommentRepository;
-import com.example.miniproject_basic_leegwnaghun.repository.ItemRepository;
-import com.example.miniproject_basic_leegwnaghun.repository.ProposalRepository;
+import com.example.project.dto.ProposalDto;
+import com.example.project.entity.CommentEntity;
+import com.example.project.entity.ItemEntity;
+import com.example.project.entity.ProposalEntity;
+import com.example.project.exceptions.IncorrectPasswordException;
+import com.example.project.repository.CommentRepository;
+import com.example.project.repository.ItemRepository;
+import com.example.project.repository.ProposalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,9 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;

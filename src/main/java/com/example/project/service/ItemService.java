@@ -1,11 +1,11 @@
-package com.example.miniproject_basic_leegwnaghun.service;
+package com.example.project.service;
 
 
-import com.example.miniproject_basic_leegwnaghun.dto.ItemDto;
-import com.example.miniproject_basic_leegwnaghun.entity.ItemEntity;
-import com.example.miniproject_basic_leegwnaghun.exceptions.IncorrectPasswordException;
-import com.example.miniproject_basic_leegwnaghun.exceptions.ItemNotFoundException;
-import com.example.miniproject_basic_leegwnaghun.repository.ItemRepository;
+import com.example.project.dto.ItemDto;
+import com.example.project.entity.ItemEntity;
+import com.example.project.exceptions.IncorrectPasswordException;
+import com.example.project.exceptions.ItemNotFoundException;
+import com.example.project.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

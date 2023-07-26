@@ -1,14 +1,14 @@
-package com.example.miniproject_basic_leegwnaghun.service;
+package com.example.project.service;
 
 
 
-import com.example.miniproject_basic_leegwnaghun.entity.ItemEntity;
-import com.example.miniproject_basic_leegwnaghun.exceptions.IncorrectPasswordException;
-import com.example.miniproject_basic_leegwnaghun.exceptions.ItemNotFoundException;
-import com.example.miniproject_basic_leegwnaghun.repository.CommentRepository;
-import com.example.miniproject_basic_leegwnaghun.dto.CommentDto;
-import com.example.miniproject_basic_leegwnaghun.entity.CommentEntity;
-import com.example.miniproject_basic_leegwnaghun.repository.ItemRepository;
+import com.example.project.entity.ItemEntity;
+import com.example.project.exceptions.IncorrectPasswordException;
+import com.example.project.exceptions.ItemNotFoundException;
+import com.example.project.repository.CommentRepository;
+import com.example.project.dto.CommentDto;
+import com.example.project.entity.CommentEntity;
+import com.example.project.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

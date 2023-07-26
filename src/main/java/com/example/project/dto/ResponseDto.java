@@ -1,4 +1,4 @@
-package com.example.miniproject_basic_leegwnaghun.dto;
+package com.example.project.dto;
 
 import lombok.Data;
 
