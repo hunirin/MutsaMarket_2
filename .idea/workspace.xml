@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 3일차 미션 구현&#10;- 7-d. 미구현">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" afterDir="false" />
+    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 1일차 미션 전 업로드">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +91,13 @@
       <recent name="" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager">
     <configuration name="Project_1_LeeGwnaghunApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Project_1_LeeGwanghun.main" />
@@ -129,7 +135,7 @@
       <workItem from="1688437695949" duration="14886000" />
       <workItem from="1688515417558" duration="41000" />
       <workItem from="1690331413072" duration="1208000" />
-      <workItem from="1690333559705" duration="28000" />
+      <workItem from="1690333559705" duration="1261000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 초기 설정">
       <created>1688014641050</created>
@@ -222,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688455097941</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat: 1일차 미션 전 업로드">
+      <created>1690333992935</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1690333992935</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +265,7 @@
     <MESSAGE value="feat: reply까지 구현&#10;- GET 했을시 writer와 password 숨기기 필요" />
     <MESSAGE value="feat: 3일차 미션 구현&#10;- 구매 확정부분 미완" />
     <MESSAGE value="feat: 3일차 미션 구현&#10;- 7-d. 미구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 3일차 미션 구현&#10;- 7-d. 미구현" />
+    <MESSAGE value="feat: 1일차 미션 전 업로드" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 1일차 미션 전 업로드" />
   </component>
 </project>

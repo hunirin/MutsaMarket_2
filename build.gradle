@@ -25,8 +25,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    //Entity
+    // JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
