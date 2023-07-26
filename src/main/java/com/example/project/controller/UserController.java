@@ -28,15 +28,6 @@ public class UserController {
     }
 
 
-//    @GetMapping("/login")
-//    public ResponseDto login(
-//            @RequestBody UserDto userDto
-//            ) {
-//        ResponseDto response = new ResponseDto();
-//        response.setMessage("로그인 되었습니다.");
-//        return response;
-//    }
-
     @PostMapping("/login")
     public ResponseDto loginJwt(@RequestBody UserDto userDto) {
         log.info(userDto.toString());
@@ -45,22 +36,6 @@ public class UserController {
         response.setMessage("로그인 되었습니다. \n token: " + authenticatedUser.getToken());
         return response;
     }
-
-//    @GetMapping("/my-profile")
-//    public String myProfile(
-//            Authentication authentication
-//    ) {
-//        UserDto userDetails
-//                = (UserDto) authentication.getPrincipal();
-//        log.info(userDetails.getUsername());
-//        log.info(userDetails.getEmail());
-//        return "my-profile";
-//    }
-
-//    @GetMapping("/register")
-//    public String registerForm() {
-//        return "register-form";
-//    }
 
 
 

@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+
 
 @Builder
 @NoArgsConstructor
@@ -22,6 +22,10 @@ public class UserDto implements UserDetails {
     private String password;
     @Getter
     private String email;
+    @Getter
+    private String phone;
+    @Getter
+    private String address;
 
     @Getter
     private String token;

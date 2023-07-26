@@ -2,6 +2,7 @@ package com.example.project.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 
 @Entity
 @Table(name = "users")
@@ -15,8 +16,9 @@ public class UserEntity {
     private String username;
     private String password;
 
-    @Column(nullable = true)
     private String email;
+    private String phone;
+    private String address;
 
     private String token;
 }

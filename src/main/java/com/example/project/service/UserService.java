@@ -34,6 +34,7 @@ public class UserService {
     }
 
     // 로그인
+    // POST
     public UserDto loginJwt(String username, String password, UserDto dto) {
         Optional<UserEntity> optionalUser = repository.findByUsername(dto.getUsername());
         if(optionalUser.isEmpty()) throw new UsernameNotFoundException(dto.getUsername());
@@ -46,8 +47,9 @@ public class UserService {
             userEntity.setToken(jwtTokenUtils.generateToken(dto));
             return dto.fromEntity(repository.save(userEntity));
         } else throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
-
-
     }
+
+    // 로그아웃
+    //
 
 }
