@@ -2,6 +2,7 @@ package com.example.project.service;
 
 
 import com.example.project.dto.ItemDto;
+import com.example.project.dto.UserDto;
 import com.example.project.entity.ItemEntity;
 import com.example.project.entity.UserEntity;
 import com.example.project.exceptions.IncorrectPasswordException;
@@ -34,12 +35,12 @@ public class ItemService {
 
     // POST
     // 글 생성
-    public ItemDto createItem(String username, String password, ItemDto dto) {
+    public ItemDto createItem(String username, String password, ItemDto dto, UserDto userDto) {
         ItemEntity newItem = new ItemEntity();
-        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
-        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
+//        Optional<UserEntity> user = userRepository.findByUsername(userDto.getUsername());
+//        if (user != null) throw new UsernameNotFoundException(userDto.getUsername());
 
-        UserEntity userEntity = dto.getUser().newEntity();
+        UserEntity userEntity = userDto.newEntity();
         // 패스워드 불러오기
         String storedPw = userEntity.getPassword();
         // 아이디 불러오기
@@ -75,17 +76,17 @@ public class ItemService {
 
     // PUT
     // update: 글 수정
-    public ItemDto updateItem(Long id, String username, String password, ItemDto dto) {
+    public ItemDto updateItem(Long id, String username, String password, ItemDto dto, UserDto userDto) {
         Optional<ItemEntity> optionalItem = repository.findById(id);
         // 찾지 못하면 물품이 없다고 표시
         if (optionalItem.isEmpty()) throw new ItemNotFoundException();
-
-        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
-        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
+//
+//        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
+//        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
 
         ItemEntity itemEntity = optionalItem.get();
 
-        UserEntity userEntity = dto.getUser().newEntity();
+        UserEntity userEntity = userDto.newEntity();
         // 패스워드 불러오기
         String storedPw = userEntity.getPassword();
         // 아이디 불러오기
@@ -103,17 +104,17 @@ public class ItemService {
     }
 
     // updateImage: 이미지 첨부
-    public ItemDto updateItemImage(Long id, String username, String password,ItemDto dto, MultipartFile itemImage) {
+    public ItemDto updateItemImage(Long id, String username, String password,ItemDto dto, MultipartFile itemImage, UserDto userDto) {
         // 물품 존재 확인
         Optional<ItemEntity> optionalItem = repository.findById(id);
         if (optionalItem.isEmpty()) throw new ItemNotFoundException();
 
         ItemEntity itemEntity = optionalItem.get();
 
-        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
-        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
+//        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
+//        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
 
-        UserEntity userEntity = dto.getUser().newEntity();
+        UserEntity userEntity = userDto.newEntity();
         // 패스워드 불러오기
         String storedPw = userEntity.getPassword();
         // 아이디 불러오기
@@ -160,15 +161,15 @@ public class ItemService {
 
     // Delete
     // 글삭제
-    public void deleteItem(Long id, String username, String password, ItemDto dto) {
+    public void deleteItem(Long id, String username, String password, ItemDto dto, UserDto userDto) {
         Optional<ItemEntity> optionalItem = repository.findById(id);
         // 찾지 못하면 물품이 없다고 표시
         if (optionalItem.isEmpty()) throw new ItemNotFoundException();
 
-        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
-        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
+//        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
+//        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
 
-        UserEntity userEntity = dto.getUser().newEntity();
+        UserEntity userEntity = userDto.newEntity();
         // 패스워드 불러오기
         String storedPw = userEntity.getPassword();
         // 아이디 불러오기

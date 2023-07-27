@@ -25,7 +25,7 @@ public class ItemController {
     public ResponseDto create(@RequestBody ItemDto itemDto) {
         log.info(itemDto.toString());
         ResponseDto response = new ResponseDto();
-        service.createItem(userDto.getUsername(), userDto.getPassword(), itemDto);
+        service.createItem(userDto.getUsername(), userDto.getPassword(), itemDto, userDto);
         response.setMessage("등록이 완료되었습니다.");
         return response;
     }
@@ -54,7 +54,7 @@ public class ItemController {
             @PathVariable("id") Long id,
             @RequestBody ItemDto itemDto
     ) {
-        service.updateItem(id, userDto.getUsername(), userDto.getPassword(), itemDto);
+        service.updateItem(id, userDto.getUsername(), userDto.getPassword(), itemDto, userDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("물품이 수정되었습니다.");
         return response;
@@ -73,7 +73,7 @@ public class ItemController {
             @RequestPart(value = "itemDto")ItemDto itemDto,
             @RequestPart(value = "image", required = false) MultipartFile itemImage
     ) {
-        service.updateItemImage(id, userDto.getUsername(), userDto.getPassword(), itemDto, itemImage);
+        service.updateItemImage(id, userDto.getUsername(), userDto.getPassword(), itemDto, itemImage, userDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("이미지가 등록되었습니다.");
         return response;
@@ -85,7 +85,7 @@ public class ItemController {
             @PathVariable("id") Long id,
             @RequestBody ItemDto itemDto
     ) {
-        service.deleteItem(id, userDto.getUsername(), userDto.getPassword(), itemDto);
+        service.deleteItem(id, userDto.getUsername(), userDto.getPassword(), itemDto, userDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("물품을 삭제했습니다.");
         return response;

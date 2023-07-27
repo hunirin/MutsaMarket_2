@@ -13,7 +13,8 @@ public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String writer;
+    private String password;
     private String title;
     private String content;
     private String minPrice;
