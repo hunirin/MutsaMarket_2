@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CommentDto {
-    private Long id;
+    private Long itemId;
     private Long commentId;
     private String writer;
     private String password;
@@ -17,7 +17,7 @@ public class CommentDto {
 
     public static CommentDto fromEntity(CommentEntity entity){
         CommentDto dto = new CommentDto();
-        dto.setId(entity.getId());
+        dto.setItemId(entity.getItemId());
         dto.setCommentId(entity.getCommentId());
         dto.setWriter(entity.getWriter());
         dto.setPassword(entity.getPassword());

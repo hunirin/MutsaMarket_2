@@ -21,11 +21,11 @@ public class CommentController {
     // 댓글 작성
     @PostMapping
     public ResponseDto create(
-            @PathVariable("id") Long id,
+            @PathVariable("itemId") Long itemId,
             @RequestBody CommentDto dto
     ) {
         ResponseDto response = new ResponseDto();
-        service.createComment(id, dto);
+        service.createComment(itemId, dto);
         response.setMessage("댓글이 등록되었습니다.");
         return response;
     }
@@ -68,7 +68,7 @@ public class CommentController {
     // reply
     @PutMapping("/{commentId}/reply")
     public ResponseDto updateReply(
-            @PathVariable("id") Long id,
+            @PathVariable("itemId") Long id,
             @PathVariable("commentId") Long commentId,
             @RequestBody CommentDto dto
     ) {

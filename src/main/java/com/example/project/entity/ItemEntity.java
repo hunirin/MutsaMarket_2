@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "items")
@@ -25,4 +27,12 @@ public class ItemEntity {
     @Column
     private String status;
     private String image;
+
+    @OneToMany
+    @JoinColumn(name = "proposal")
+    private List<ProposalEntity> proposals;
+
+    @OneToMany
+    @JoinColumn(name = "comment")
+    private List<CommentEntity> comments;
 }

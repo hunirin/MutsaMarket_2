@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProposalDto {
-    private Long id;
+    private Long itemId;
     private Long proposalId;
     private String writer;
     private String password;
@@ -17,7 +17,7 @@ public class ProposalDto {
 
     public static ProposalDto fromEntity(ProposalEntity entity) {
         ProposalDto dto = new ProposalDto();
-        dto.setId(entity.getId());
+        dto.setItemId(entity.getItemId());
         dto.setProposalId(entity.getProposalId());
         dto.setWriter(entity.getWriter());
         dto.setPassword(entity.getPassword());

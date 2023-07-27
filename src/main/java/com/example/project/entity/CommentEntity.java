@@ -11,7 +11,7 @@ public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
-    private Long id;
+    private Long itemId;
 
     @Column(nullable = false)
     private String writer;
@@ -21,4 +21,8 @@ public class CommentEntity {
     @JsonIgnore
     @Column(nullable = false)
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "comment")
+    private ItemEntity item;
 }

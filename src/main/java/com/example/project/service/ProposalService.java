@@ -27,8 +27,8 @@ public class ProposalService {
     private final ProposalRepository proposalRepository;
 
     // POST
-    public ProposalDto createProposal(Long id, ProposalDto proposalDto) {
-        if (!itemRepository.existsById(id))
+    public ProposalDto createProposal(Long itemId, ProposalDto proposalDto) {
+        if (!itemRepository.existsById(itemId))
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
         ProposalEntity newProposal = new ProposalEntity();
@@ -52,7 +52,7 @@ public class ProposalService {
                 || (commentEntity != null && commentEntity.getPassword().equals(password))) {
 
             Pageable pageable = PageRequest.of(
-                    pageNum, pageSize, Sort.by("id").ascending());
+                    pageNum, pageSize, Sort.by("proposalId").ascending());
             Page<ProposalEntity> proposalEntityPage = proposalRepository.findAll(pageable);
             Page<ProposalDto> proposalDtoPage = proposalEntityPage.map(ProposalDto::fromEntity);
             return proposalDtoPage;
