@@ -1,8 +1,11 @@
 package com.example.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -14,6 +17,9 @@ public class UserEntity {
 
     @Column(nullable = false, unique = true)
     private String username;
+
+    @JsonIgnore
+    @Column(nullable = false)
     private String password;
 
     private String email;
@@ -21,4 +27,8 @@ public class UserEntity {
     private String address;
 
     private String token;
+
+    @OneToMany
+    @JoinColumn(name = "user")
+    private List<ItemEntity> items;
 }

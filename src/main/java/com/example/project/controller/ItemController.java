@@ -2,6 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.dto.ItemDto;
 import com.example.project.dto.ResponseDto;
+import com.example.project.dto.UserDto;
 import com.example.project.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class ItemController {
     private final ItemService service;
+    private final UserDto userDto;
 
     // POST /items
     // 물품 등록
@@ -23,7 +25,7 @@ public class ItemController {
     public ResponseDto create(@RequestBody ItemDto itemDto) {
         log.info(itemDto.toString());
         ResponseDto response = new ResponseDto();
-        service.createItem(itemDto);
+        service.createItem(userDto.getUsername(), userDto.getPassword(), itemDto);
         response.setMessage("등록이 완료되었습니다.");
         return response;
     }
@@ -52,7 +54,7 @@ public class ItemController {
             @PathVariable("id") Long id,
             @RequestBody ItemDto itemDto
     ) {
-        service.updateItem(id, itemDto.getPassword(), itemDto);
+        service.updateItem(id, userDto.getUsername(), userDto.getPassword(), itemDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("물품이 수정되었습니다.");
         return response;
@@ -71,7 +73,7 @@ public class ItemController {
             @RequestPart(value = "itemDto")ItemDto itemDto,
             @RequestPart(value = "image", required = false) MultipartFile itemImage
     ) {
-        service.updateItemImage(id, itemDto.getPassword(), itemImage);
+        service.updateItemImage(id, userDto.getUsername(), userDto.getPassword(), itemDto, itemImage);
         ResponseDto response = new ResponseDto();
         response.setMessage("이미지가 등록되었습니다.");
         return response;
@@ -83,7 +85,7 @@ public class ItemController {
             @PathVariable("id") Long id,
             @RequestBody ItemDto itemDto
     ) {
-        service.deleteItem(id, itemDto.getPassword());
+        service.deleteItem(id, userDto.getUsername(), userDto.getPassword(), itemDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("물품을 삭제했습니다.");
         return response;

@@ -3,9 +3,11 @@ package com.example.project.service;
 
 import com.example.project.dto.ItemDto;
 import com.example.project.entity.ItemEntity;
+import com.example.project.entity.UserEntity;
 import com.example.project.exceptions.IncorrectPasswordException;
 import com.example.project.exceptions.ItemNotFoundException;
 import com.example.project.repository.ItemRepository;
+import com.example.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -13,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -27,18 +30,29 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ItemService {
     private final ItemRepository repository;
+    private final UserRepository userRepository;
 
     // POST
     // 글 생성
-    public ItemDto createItem(ItemDto dto) {
+    public ItemDto createItem(String username, String password, ItemDto dto) {
         ItemEntity newItem = new ItemEntity();
-        newItem.setTitle(dto.getTitle());
-        newItem.setContent(dto.getContent());
-        newItem.setWriter(dto.getWriter());
-        newItem.setPassword(dto.getPassword());
-        newItem.setMinPrice(dto.getMinPrice());
-        newItem.setStatus("판매중");
-        return ItemDto.fromEntity(repository.save(newItem));
+        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
+        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
+
+        UserEntity userEntity = dto.getUser().newEntity();
+        // 패스워드 불러오기
+        String storedPw = userEntity.getPassword();
+        // 아이디 불러오기
+        String storedId = userEntity.getUsername();
+
+
+        if (username.equals(storedId) && password.equals(storedPw)) {
+            newItem.setTitle(dto.getTitle());
+            newItem.setContent(dto.getContent());
+            newItem.setMinPrice(dto.getMinPrice());
+            newItem.setStatus("판매중");
+            return ItemDto.fromEntity(repository.save(newItem));
+        } else throw new IncorrectPasswordException();
     }
 
     // GET
@@ -61,37 +75,52 @@ public class ItemService {
 
     // PUT
     // update: 글 수정
-    public ItemDto updateItem(Long id, String password, ItemDto dto) {
+    public ItemDto updateItem(Long id, String username, String password, ItemDto dto) {
         Optional<ItemEntity> optionalItem = repository.findById(id);
         // 찾지 못하면 물품이 없다고 표시
         if (optionalItem.isEmpty()) throw new ItemNotFoundException();
 
+        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
+        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
+
         ItemEntity itemEntity = optionalItem.get();
-        // 패스워드 저장
-        String storedPw = itemEntity.getPassword();
+
+        UserEntity userEntity = dto.getUser().newEntity();
+        // 패스워드 불러오기
+        String storedPw = userEntity.getPassword();
+        // 아이디 불러오기
+        String storedId = userEntity.getUsername();
 
 
-        if (password.equals(storedPw)) {
-        itemEntity.setTitle(dto.getTitle());
-        itemEntity.setContent(dto.getContent());
-        itemEntity.setMinPrice(dto.getMinPrice());
-        ItemDto.fromEntity(repository.save(itemEntity));
-        return ItemDto.fromEntity(itemEntity);
+        if (username.equals(storedId) && password.equals(storedPw)) {
+
+            itemEntity.setTitle(dto.getTitle());
+            itemEntity.setContent(dto.getContent());
+            itemEntity.setMinPrice(dto.getMinPrice());
+            ItemDto.fromEntity(repository.save(itemEntity));
+            return ItemDto.fromEntity(itemEntity);
         } else throw new IncorrectPasswordException();
     }
 
     // updateImage: 이미지 첨부
-    public ItemDto updateItemImage(Long id, String password, MultipartFile itemImage) {
+    public ItemDto updateItemImage(Long id, String username, String password,ItemDto dto, MultipartFile itemImage) {
         // 물품 존재 확인
         Optional<ItemEntity> optionalItem = repository.findById(id);
         if (optionalItem.isEmpty()) throw new ItemNotFoundException();
 
         ItemEntity itemEntity = optionalItem.get();
-        // 패스워드 저장
-        String storedPw = itemEntity.getPassword();
+
+        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
+        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
+
+        UserEntity userEntity = dto.getUser().newEntity();
+        // 패스워드 불러오기
+        String storedPw = userEntity.getPassword();
+        // 아이디 불러오기
+        String storedId = userEntity.getUsername();
 
 
-        if (password.equals(storedPw)) {
+        if (username.equals(storedId) && password.equals(storedPw)) {
             // 업로드위치
             // media/{userId}/image
             String itemImageDir = String.format("media/%d/", id); // 폴더명
@@ -131,17 +160,22 @@ public class ItemService {
 
     // Delete
     // 글삭제
-    public void deleteItem(Long id, String password) {
+    public void deleteItem(Long id, String username, String password, ItemDto dto) {
         Optional<ItemEntity> optionalItem = repository.findById(id);
         // 찾지 못하면 물품이 없다고 표시
         if (optionalItem.isEmpty()) throw new ItemNotFoundException();
 
-        ItemEntity itemEntity = optionalItem.get();
-        // 패스워드 저장
-        String storedPw = itemEntity.getPassword();
+        Optional<UserEntity> user = userRepository.findByUsername(dto.getUser().getUsername());
+        if (user != null) throw new UsernameNotFoundException(dto.getUser().getUsername());
+
+        UserEntity userEntity = dto.getUser().newEntity();
+        // 패스워드 불러오기
+        String storedPw = userEntity.getPassword();
+        // 아이디 불러오기
+        String storedId = userEntity.getUsername();
 
 
-        if (password.equals(storedPw)) {
+        if (username.equals(storedId) && password.equals(storedPw)) {
             repository.deleteById(id);
         } else throw new IncorrectPasswordException();
     }

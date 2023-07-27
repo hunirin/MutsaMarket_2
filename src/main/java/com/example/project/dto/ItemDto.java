@@ -8,8 +8,7 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemDto {
     private Long id;
-    private String writer;
-    private String password;
+    private UserDto user;
     private String title;
     private String content;
     private String minPrice;
@@ -19,8 +18,7 @@ public class ItemDto {
     public static ItemDto fromEntity(ItemEntity entity) {
         ItemDto dto = new ItemDto();
         dto.setId(entity.getId());
-        dto.setWriter(entity.getWriter());
-        dto.setPassword(entity.getPassword());
+        dto.setUser(UserDto.fromEntity(entity.getUser()));
         dto.setTitle(entity.getTitle());
         dto.setContent(entity.getContent());
         dto.setMinPrice(entity.getMinPrice());

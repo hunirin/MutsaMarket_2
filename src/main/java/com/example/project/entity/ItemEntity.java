@@ -14,19 +14,15 @@ public class ItemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String writer;
     private String title;
     private String content;
     private String minPrice;
-
-    @JsonIgnore
-    @Column(nullable = false)
-    private String password;
-
-    @Column
     private String status;
     private String image;
+
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private UserEntity user;
 
     @OneToMany
     @JoinColumn(name = "proposal")

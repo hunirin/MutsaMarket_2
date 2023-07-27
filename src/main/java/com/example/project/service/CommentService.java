@@ -9,6 +9,7 @@ import com.example.project.repository.CommentRepository;
 import com.example.project.dto.CommentDto;
 import com.example.project.entity.CommentEntity;
 import com.example.project.repository.ItemRepository;
+import com.example.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,6 +26,7 @@ import java.util.Optional;
 public class CommentService {
     private final ItemRepository itemRepository;
     private final CommentRepository commentRepository;
+    private final UserRepository userRepository;
 
     // POST
     // 댓글 생성
@@ -103,7 +105,7 @@ public class CommentService {
 
         ItemEntity itemEntity
                 = optionalItem.orElseThrow(() -> new ItemNotFoundException());
-        String storedPw = itemEntity.getPassword();
+        String storedPw = itemEntity.getUser().getPassword();
 
         if (password.equals(storedPw)) {
             Optional<CommentEntity> optionalComment = commentRepository.findById(id);

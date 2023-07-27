@@ -48,7 +48,7 @@ public class ProposalService {
         ItemEntity itemEntity = itemRepository.findByWriterAndAndPassword(writer, password);
         CommentEntity commentEntity = commentRepository.findByWriterAndAndPassword(writer, password);
 
-        if ((itemEntity != null && itemEntity.getPassword().equals(password))
+        if ((itemEntity != null && itemEntity.getUser().getPassword().equals(password))
                 || (commentEntity != null && commentEntity.getPassword().equals(password))) {
 
             Pageable pageable = PageRequest.of(
@@ -113,7 +113,7 @@ public class ProposalService {
 
         ItemEntity itemEntity = itemRepository.findByWriterAndAndPassword(writer, password);
 
-        if (itemEntity != null && itemEntity.getPassword().equals(password)) {
+        if (itemEntity != null && itemEntity.getUser().getPassword().equals(password)) {
             if (optionalProposal.isEmpty())
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
