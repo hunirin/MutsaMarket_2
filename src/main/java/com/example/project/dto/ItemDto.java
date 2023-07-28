@@ -9,6 +9,7 @@ import lombok.Data;
 public class ItemDto {
     private Long id;
     private String writer;
+//    private UserDto user;
     private String password;
     private String title;
     private String content;
@@ -20,6 +21,7 @@ public class ItemDto {
         ItemDto dto = new ItemDto();
         dto.setId(entity.getId());
         dto.setWriter(entity.getWriter());
+//        dto.setUser(UserDto.fromEntity(entity.getUser()));
         dto.setPassword(entity.getPassword());
         dto.setTitle(entity.getTitle());
         dto.setContent(entity.getContent());

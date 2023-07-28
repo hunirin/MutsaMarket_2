@@ -2,7 +2,6 @@ package com.example.project.controller;
 
 import com.example.project.dto.ItemDto;
 import com.example.project.dto.ResponseDto;
-import com.example.project.dto.UserDto;
 import com.example.project.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,15 +16,20 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class ItemController {
     private final ItemService service;
-    private final UserDto userDto;
 
     // POST /items
     // 물품 등록
     @PostMapping
-    public ResponseDto create(@RequestBody ItemDto itemDto) {
+    public ResponseDto create(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            @RequestBody ItemDto itemDto
+
+    ) {
         log.info(itemDto.toString());
+//        UserDto userDto = new UserDto();
         ResponseDto response = new ResponseDto();
-        service.createItem(userDto.getUsername(), userDto.getPassword(), itemDto, userDto);
+        service.createItem(username, password, itemDto);
         response.setMessage("등록이 완료되었습니다.");
         return response;
     }
@@ -52,9 +56,11 @@ public class ItemController {
     @PutMapping("/{id}")
     public ResponseDto update(
             @PathVariable("id") Long id,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestBody ItemDto itemDto
     ) {
-        service.updateItem(id, userDto.getUsername(), userDto.getPassword(), itemDto, userDto);
+        service.updateItem(id, username, password, itemDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("물품이 수정되었습니다.");
         return response;
@@ -70,10 +76,13 @@ public class ItemController {
             @PathVariable("id") Long id,
             // @RequestPart로 image는 파일로,
             // writer와 password는 Content type을 application/json으로 해서 받음
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestPart(value = "itemDto")ItemDto itemDto,
             @RequestPart(value = "image", required = false) MultipartFile itemImage
     ) {
-        service.updateItemImage(id, userDto.getUsername(), userDto.getPassword(), itemDto, itemImage, userDto);
+
+        service.updateItemImage(id, username, password, itemDto, itemImage);
         ResponseDto response = new ResponseDto();
         response.setMessage("이미지가 등록되었습니다.");
         return response;
@@ -83,9 +92,11 @@ public class ItemController {
     @DeleteMapping("/{id}")
     public ResponseDto delete(
             @PathVariable("id") Long id,
-            @RequestBody ItemDto itemDto
+            @RequestParam("username") String username,
+            @RequestParam("password") String password
     ) {
-        service.deleteItem(id, userDto.getUsername(), userDto.getPassword(), itemDto, userDto);
+
+        service.deleteItem(id, username, password);
         ResponseDto response = new ResponseDto();
         response.setMessage("물품을 삭제했습니다.");
         return response;

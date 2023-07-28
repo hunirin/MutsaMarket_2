@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,7 +19,6 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
@@ -26,9 +26,12 @@ public class UserEntity {
     private String phone;
     private String address;
 
-    private String token;
+    @OneToMany(mappedBy = "user")
+    private List<ItemEntity> items = new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name = "user")
-    private List<ItemEntity> items;
+    @OneToMany(mappedBy = "user")
+    private List<ProposalEntity> proposals = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<CommentEntity> comments = new ArrayList<>();
 }

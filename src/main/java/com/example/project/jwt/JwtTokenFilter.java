@@ -1,6 +1,7 @@
 package com.example.project.jwt;
 
-import com.example.project.dto.UserDto;
+//import com.example.project.dto.UserDto;
+import com.example.project.entity.UserEntity;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,9 +47,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 // 사용자 인증 정보 생성
                 AbstractAuthenticationToken authenticationToken
                         = new UsernamePasswordAuthenticationToken(
-                        UserDto.builder()
-                                .username(username)
-                                .build(),
+                        username,
                         token, new ArrayList<>()
                 );
                 context.setAuthentication(authenticationToken);

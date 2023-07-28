@@ -30,4 +30,4 @@ spring:
       static-locations: file:media/,classpath:/static
 
 jwt:
-  secret: asdffkjkfwdkfnmskdjfksdkfsdkfjskdlfSDFGGGDGEeewwEFSDFg
+  secret: asdffkjkfwdkfnmskdjfksdkfsdkfjskdlfSDFGGGDGEeewwEFSDFgdsafqqq

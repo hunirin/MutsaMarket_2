@@ -29,4 +29,8 @@ public class ProposalEntity {
     @ManyToOne
     @JoinColumn(name = "proposal")
     private ItemEntity item;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }

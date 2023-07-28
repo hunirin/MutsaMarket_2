@@ -4,13 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 2일차&#10;- item에 1:N으로 proposals, comments 연결시킴">
+    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 수정 실패 뒤로 돌리기">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project/dto/CustomUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project/service/JpaUserDetailsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/dto/ItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/entity/CommentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/entity/CommentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/entity/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/entity/ItemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/entity/ProposalEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/entity/ProposalEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/jwt/JwtTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/jwt/JwtTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/service/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +160,7 @@
       <workItem from="1690343594696" duration="1995000" />
       <workItem from="1690358684160" duration="9954000" />
       <workItem from="1690417181198" duration="7289000" />
+      <workItem from="1690502221576" duration="1525000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 초기 설정">
       <created>1688014641050</created>
@@ -277,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690422429426</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat: 수정 실패 뒤로 돌리기">
+      <created>1690439502497</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1690439502497</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +336,7 @@
     <MESSAGE value="feat: UserEntity 및 파일 생성" />
     <MESSAGE value="feat: JWT 발급까지 구현&#10;- POST시 403에러 문제발생 -&gt; 데이터는 입력됨" />
     <MESSAGE value="feat: 2일차&#10;- item에 1:N으로 proposals, comments 연결시킴" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 2일차&#10;- item에 1:N으로 proposals, comments 연결시킴" />
+    <MESSAGE value="feat: 수정 실패 뒤로 돌리기" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 수정 실패 뒤로 돌리기" />
   </component>
 </project>

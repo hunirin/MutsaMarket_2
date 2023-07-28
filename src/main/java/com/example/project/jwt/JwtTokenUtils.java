@@ -1,13 +1,14 @@
 package com.example.project.jwt;
 
 
-import com.example.project.dto.UserDto;
+//import com.example.project.dto.UserDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -49,9 +50,9 @@ public class JwtTokenUtils {
     }
 
     // 주어진 사용자 정보를 바탕으로 JWT를 문자열로 생성
-    public String generateToken(UserDto userDto) {
+    public String generateToken(UserDetails userDetails) {
         Claims jwtClaims = Jwts.claims()
-                .setSubject(userDto.getUsername())
+                .setSubject(userDetails.getUsername())
                 .setIssuedAt(Date.from(Instant.now()))
                 .setExpiration(Date.from(Instant.now().plusSeconds(3600)));
 

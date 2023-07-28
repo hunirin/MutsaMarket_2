@@ -22,7 +22,7 @@ public class ItemEntity {
     private String image;
 
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "user_id")
     private UserEntity user;
 
     @OneToMany

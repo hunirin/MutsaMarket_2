@@ -25,4 +25,8 @@ public class CommentEntity {
     @ManyToOne
     @JoinColumn(name = "comment")
     private ItemEntity item;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }
