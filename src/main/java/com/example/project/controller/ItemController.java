@@ -36,7 +36,7 @@ public class ItemController {
 
     // GET /items
     // 모두 조회 ( 0 ~ 20개)
-    @GetMapping
+    @GetMapping("/read")
     public Page<ItemDto> readAll(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "limit", defaultValue = "20") Integer limit
@@ -45,7 +45,7 @@ public class ItemController {
     }
 
     // 하나만 조회
-    @GetMapping("/{id}")
+    @GetMapping("/read/{id}")
     public ItemDto read(
             @PathVariable("id") Long id
     ) {

@@ -34,23 +34,18 @@ public class WebSecurityConfig {
                                 .requestMatchers(
                                         "/no-auth",
                                         "/token/issue",
-                                        "/error",
-                                        "/item",
-                                        "/item/{id}",
-                                        "/items/{id}/comments",
-                                        "/users/resgister"
+                                        "/users/register",
+                                        "/items/read",
+                                        "/items/read/**",
+                                        "/items/{id}/comments/read"
                                 )
                                 .permitAll()
-                                .requestMatchers("/item/**")
-                                .hasRole("ADMIN")
                                 .requestMatchers(
-                                        "/item/**",
-                                        "/items/{id}/comments/**",
-                                        "/items/{id}/proposal/**"
+                                        "/**"
                                 )
                                 .hasRole("USER")
                                 .anyRequest()
-                                .permitAll()
+                                .permitAll() // 설정 어떻게하는지 헷갈림
                 )
                 .sessionManagement(
                         sessionManagement -> sessionManagement

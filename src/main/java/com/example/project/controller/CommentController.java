@@ -34,7 +34,7 @@ public class CommentController {
 
     // GET
     // 댓글 전체 조회
-    @GetMapping
+    @GetMapping("/read")
     public Page<CommentDto> readAll(
             @RequestParam(value = "pageNum", defaultValue = "0") Integer pageNum,
             @RequestParam(value = "pageSize", defaultValue = "20") Integer pageSize
@@ -46,9 +46,11 @@ public class CommentController {
     @PutMapping("/{commentId}")
     public ResponseDto update(
             @PathVariable("commentId") Long commentId,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestBody CommentDto dto
     ) {
-        service.updateComment(dto.getPassword(), commentId, dto);
+        service.updateComment(commentId, username, password, dto);
         ResponseDto response = new ResponseDto();
         response.setMessage("댓글이 수정되었습니다.");
         return response;
@@ -58,11 +60,12 @@ public class CommentController {
     @DeleteMapping("/{commentId}")
     public ResponseDto delete(
             @PathVariable("commentId") Long commentId,
-            @RequestBody CommentDto dto
+            @RequestParam("username") String username,
+            @RequestParam("password") String password
     ) {
-        service.deleteComment(dto.getPassword(), commentId);
+        service.deleteComment(commentId, username, password);
         ResponseDto response = new ResponseDto();
-        response.setMessage("물품을 삭제했습니다.");
+        response.setMessage("댓글을 삭제했습니다.");
         return response;
     }
 
@@ -72,9 +75,11 @@ public class CommentController {
     public ResponseDto updateReply(
             @PathVariable("id") Long id,
             @PathVariable("commentId") Long commentId,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestBody CommentDto dto
     ) {
-        service.updateReply(id, dto.getPassword(), commentId, dto);
+        service.updateReply(id, commentId, username, password, dto);
         ResponseDto response = new ResponseDto();
         response.setMessage("댓글에 답변이 추가되었습니다.");
         return response;

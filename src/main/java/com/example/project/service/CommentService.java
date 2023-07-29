@@ -78,69 +78,107 @@ public class CommentService {
     // PUT
     // update: 댓글 수정
     public CommentDto updateComment(
-            String password,
             Long commentId,
+            String username,
+            String password,
             CommentDto dto
     ) {
         Optional<CommentEntity> optionalComment
                 = commentRepository.findById(commentId);
 
         CommentEntity comment= optionalComment.get();
-        String storedPw = comment.getPassword();
 
-        if (password.equals(storedPw)) {
-            if (optionalComment.isEmpty())
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        Optional<UserEntity> user = userRepository.findByUsername(username);
 
-            comment.setContent(dto.getContent());
-            comment.setWriter(dto.getWriter());
-            return CommentDto.fromEntity(commentRepository.save(comment));
-        } else throw new IncorrectPasswordException();
+        if (user.isPresent()) {
+            UserEntity userEntity = user.get();
+            String storedPw = userEntity.getPassword();
+            String storedId = userEntity.getUsername();
+            log.info(storedId);
+            log.info(storedPw);
+
+            if (passwordEncoder.matches(password, storedPw)) {
+                if (optionalComment.isEmpty())
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                comment.setContent(dto.getContent());
+                return CommentDto.fromEntity(commentRepository.save(comment));
+            } else {
+                throw new IncorrectPasswordException();
+            }
+        } else {
+            throw new UsernameNotFoundException(username);
+        }
     }
 
     // Delete
     // 글 삭제
-    public void deleteComment(String password, Long commentId) {
+    public void deleteComment(Long commentId, String username, String password) {
         Optional<CommentEntity> optionalComment
                 = commentRepository.findById(commentId);
+
+
         if (optionalComment.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
-        CommentEntity commentEntity = optionalComment.get();
-        // 패스워드 저장
-        String storedPw = commentEntity.getPassword();
+        Optional<UserEntity> user = userRepository.findByUsername(username);
 
-        if (password.equals(storedPw)) {
-            commentRepository.deleteById(commentId);
-        } else throw new IncorrectPasswordException();
+        if (user.isPresent()) {
+            UserEntity userEntity = user.get();
+            String storedPw = userEntity.getPassword();
+            String storedId = userEntity.getUsername();
+            log.info(storedId);
+            log.info(storedPw);
+
+            if (passwordEncoder.matches(password, storedPw)) {
+                commentRepository.deleteById(commentId);
+            } else {
+                throw new IncorrectPasswordException();
+            }
+        } else {
+            throw new UsernameNotFoundException(username);
+        }
     }
 
     // Reply
     // 답글
     public CommentDto updateReply(
             Long id,
-            String password,
             Long commentId,
+            String username,
+            String password,
             CommentDto dto
     ) {
         Optional<ItemEntity> optionalItem
-                = itemRepository.findById(commentId);
+                = itemRepository.findById(id);
 
         ItemEntity itemEntity
                 = optionalItem.orElseThrow(() -> new ItemNotFoundException());
-        String storedPw = itemEntity.getUser().getPassword();
 
-        if (password.equals(storedPw)) {
-            Optional<CommentEntity> optionalComment = commentRepository.findById(id);
-            CommentEntity comment = optionalComment.orElseThrow(() -> new ItemNotFoundException());
+        Optional<UserEntity> user = userRepository.findByUsername(username);
 
-            // 대상 댓글이 대상 게시글의 댓글이 맞는지
-            if (!id.equals(comment.getCommentId()))
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        if (user.isPresent()) {
+            UserEntity userEntity = user.get();
+            String storedPw = userEntity.getPassword();
+            String storedId = userEntity.getUsername();
+            log.info(storedId);
+            log.info(storedPw);
 
-            comment.setReply(dto.getReply());
-            return CommentDto.fromEntity(commentRepository.save(comment));
-        } else throw new IncorrectPasswordException();
+            if (passwordEncoder.matches(password, storedPw)) {
+                Optional<CommentEntity> optionalComment = commentRepository.findById(commentId);
+                CommentEntity comment = optionalComment.orElseThrow(() -> new ItemNotFoundException());
+
+                // 대상 댓글이 대상 게시글의 댓글이 맞는지
+                if (!id.equals(comment.getCommentId()))
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+
+                comment.setReply(dto.getReply());
+                return CommentDto.fromEntity(commentRepository.save(comment));
+            } else {
+                throw new IncorrectPasswordException();
+            }
+        } else {
+            throw new UsernameNotFoundException(username);
+        }
     }
 
 }
