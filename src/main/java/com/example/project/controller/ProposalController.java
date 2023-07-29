@@ -19,33 +19,35 @@ public class ProposalController {
     // POST
     @PostMapping
     public ResponseDto create(
-            @PathVariable("id") Long id,
+            @PathVariable("id") Long itemId,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestBody ProposalDto proposalDto
     ) {
         ResponseDto response = new ResponseDto();
-        service.createProposal(id, proposalDto);
+        service.createProposal(itemId, username, password, proposalDto);
         response.setMessage("구매 제안이 등록되었습니다.");
         return response;
     }
 
     // GET
-    @GetMapping
+    @GetMapping("/read")
     public Page<ProposalDto> readAll (
-            @RequestParam("writer") String writer,
-            @RequestParam("password") String password,
             @RequestParam(value = "pageNum", defaultValue = "0") Integer pageNum,
             @RequestParam(value = "pageSize", defaultValue = "20") Integer pageSize
     ) {
-        return service.readProposalPaged(writer, password, pageNum, pageSize);
+        return service.readProposalPaged(pageNum, pageSize);
     }
 
     // PUT
     @PutMapping("/{proposalId}/updatePrice")
     public ResponseDto updatePrice(
             @PathVariable("proposalId") Long proposalId,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestBody ProposalDto proposalDto
     ) {
-        service.updateProposal(proposalId, proposalDto.getWriter(), proposalDto.getPassword(), proposalDto);
+        service.updateProposal(proposalId, username, password, proposalDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("제안이 수정되었습니다.");
         return response;
@@ -55,9 +57,10 @@ public class ProposalController {
     @DeleteMapping("/{proposalId}")
     public ResponseDto delete(
             @PathVariable("proposalId") Long proposalId,
-            @RequestBody ProposalDto proposalDto
+            @RequestParam("username") String username,
+            @RequestParam("password") String password
     ) {
-        service.deleteProposal(proposalDto.getWriter(), proposalDto.getPassword(), proposalId);
+        service.deleteProposal(proposalId, username, password);
         ResponseDto response = new ResponseDto();
         response.setMessage("물품을 삭제했습니다.");
         return response;
@@ -68,9 +71,11 @@ public class ProposalController {
     @PutMapping("/{proposalId}/updateStatus")
     public ResponseDto updateStatus(
             @PathVariable("proposalId") Long proposalId,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestBody ProposalDto proposalDto
     ) {
-        service.updateProposalStatus(proposalId, proposalDto.getWriter(), proposalDto.getPassword(), proposalDto);
+        service.updateProposalStatus(proposalId, username, password, proposalDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("제안의 상태가 변경되었습니다.");
         return response;
@@ -81,9 +86,11 @@ public class ProposalController {
     @PutMapping("/{proposalId}/updateConfirm")
     public ResponseDto updateConfirm(
             @PathVariable("proposalId") Long proposalId,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestBody ProposalDto proposalDto
     ) {
-        service.updateConfirm(proposalId, proposalDto.getWriter(), proposalDto.getPassword(), proposalDto);
+        service.updateConfirm(proposalId, username, password,  proposalDto);
         ResponseDto response = new ResponseDto();
         response.setMessage("구매가 확정되었습니다");
 

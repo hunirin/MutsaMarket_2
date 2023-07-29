@@ -37,7 +37,8 @@ public class WebSecurityConfig {
                                         "/users/register",
                                         "/items/read",
                                         "/items/read/**",
-                                        "/items/{id}/comments/read"
+                                        "/items/{id}/comments/read",
+                                        "/items/{id}/proposal/read"
                                 )
                                 .permitAll()
                                 .requestMatchers(
@@ -45,7 +46,7 @@ public class WebSecurityConfig {
                                 )
                                 .hasRole("USER")
                                 .anyRequest()
-                                .permitAll() // 설정 어떻게하는지 헷갈림
+                                .permitAll()
                 )
                 .sessionManagement(
                         sessionManagement -> sessionManagement

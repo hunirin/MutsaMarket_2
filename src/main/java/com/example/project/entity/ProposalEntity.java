@@ -17,14 +17,9 @@ public class ProposalEntity {
     private Long proposalId;
     private Long itemId;
 
-    @Column(nullable = false)
-    private String writer;
+    private String username;
     private String status;
     private String suggestedPrice;
-
-    @JsonIgnore
-    @Column(nullable = false)
-    private String password;
 
     @ManyToOne
     @JoinColumn(name = "proposal")

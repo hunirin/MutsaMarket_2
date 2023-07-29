@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 3일차&#10;- comment 수정 시작&#10;- writer 대신 username이 뜨게 대체">
+    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 3일차&#10;- comments까지 로그인 구현완료">
       <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ProposalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ProposalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/dto/ProposalDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/dto/ProposalDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/entity/ProposalEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/entity/ProposalEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/service/ProposalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/service/ProposalService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +151,7 @@
       <workItem from="1690417181198" duration="7289000" />
       <workItem from="1690502221576" duration="1525000" />
       <workItem from="1690506777385" duration="12542000" />
-      <workItem from="1690590485919" duration="5764000" />
+      <workItem from="1690590485919" duration="8551000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 초기 설정">
       <created>1688014641050</created>
@@ -306,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690592856167</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat: 3일차&#10;- comments까지 로그인 구현완료">
+      <created>1690608134308</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1690608134308</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,6 +351,7 @@
     <MESSAGE value="feat: 수정 실패 뒤로 돌리기" />
     <MESSAGE value="feat: 3일차&#10;- 회원가입 구현 &#10;-&gt; 404 에러발생, GET /users/login이 자동으로뜸&#10;- JWT 토큰 발급&#10;- item 수정" />
     <MESSAGE value="feat: 3일차&#10;- comment 수정 시작&#10;- writer 대신 username이 뜨게 대체" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 3일차&#10;- comment 수정 시작&#10;- writer 대신 username이 뜨게 대체" />
+    <MESSAGE value="feat: 3일차&#10;- comments까지 로그인 구현완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 3일차&#10;- comments까지 로그인 구현완료" />
   </component>
 </project>
