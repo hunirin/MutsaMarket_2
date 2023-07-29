@@ -13,14 +13,15 @@ public class CommentEntity {
     private Long commentId;
     private Long itemId;
 
-    @Column(nullable = false)
+    // 나중에 삭제해야함
     private String writer;
+    private String password;
+
     private String content;
     private String reply;
 
-    @JsonIgnore
-    @Column(nullable = false)
-    private String password;
+    private String username;
+
 
     @ManyToOne
     @JoinColumn(name = "comment")

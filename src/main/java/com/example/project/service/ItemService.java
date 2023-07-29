@@ -55,6 +55,7 @@ public class ItemService {
                 newItem.setTitle(dto.getTitle());
                 newItem.setContent(dto.getContent());
                 newItem.setMinPrice(dto.getMinPrice());
+                newItem.setUsername(storedId);
                 newItem.setStatus("판매중");
                 return ItemDto.fromEntity(repository.save(newItem));
             } else {

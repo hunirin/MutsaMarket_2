@@ -45,18 +45,18 @@ public class ProposalService {
     public Page<ProposalDto> readProposalPaged(
             String writer, String password, Integer pageNum, Integer pageSize
     ) {
-        ItemEntity itemEntity = itemRepository.findByWriterAndAndPassword(writer, password);
-        CommentEntity commentEntity = commentRepository.findByWriterAndAndPassword(writer, password);
+//        ItemEntity itemEntity = itemRepository.findByWriterAndAndPassword(writer, password);
+//        CommentEntity commentEntity = commentRepository.findByWriterAndAndPassword(writer, password);
 
-        if ((itemEntity != null && itemEntity.getUser().getPassword().equals(password))
-                || (commentEntity != null && commentEntity.getPassword().equals(password))) {
+//        if ((itemEntity != null && itemEntity.getUser().getPassword().equals(password))
+//                || (commentEntity != null && commentEntity.getPassword().equals(password))) {
 
             Pageable pageable = PageRequest.of(
                     pageNum, pageSize, Sort.by("proposalId").ascending());
             Page<ProposalEntity> proposalEntityPage = proposalRepository.findAll(pageable);
             Page<ProposalDto> proposalDtoPage = proposalEntityPage.map(ProposalDto::fromEntity);
             return proposalDtoPage;
-        } else throw new IncorrectPasswordException();
+//        } else throw new IncorrectPasswordException();
     }
 
     // PUT
@@ -111,15 +111,15 @@ public class ProposalService {
                 = proposalRepository.findById(proposalId);
         ProposalEntity proposal = optionalProposal.get();
 
-        ItemEntity itemEntity = itemRepository.findByWriterAndAndPassword(writer, password);
+//        ItemEntity itemEntity = itemRepository.findByWriterAndAndPassword(writer, password);
 
-        if (itemEntity != null && itemEntity.getUser().getPassword().equals(password)) {
+//        if (itemEntity != null && itemEntity.getUser().getPassword().equals(password)) {
             if (optionalProposal.isEmpty())
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
             proposal.setStatus(proposalDto.getStatus());
             return ProposalDto.fromEntity(proposalRepository.save(proposal));
-        } else throw new IncorrectPasswordException();
+//        } else throw new IncorrectPasswordException();
     }
 
     // PUT

@@ -1,7 +1,7 @@
 package com.example.project.jwt;
 
 //import com.example.project.dto.UserDto;
-import com.example.project.entity.UserEntity;
+import com.example.project.service.JpaUserDetailsManager;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -22,9 +23,12 @@ import java.util.ArrayList;
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
     private JwtTokenUtils jwtTokenUtils;
+    private final JpaUserDetailsManager userDetailsManager;
 
-    public JwtTokenFilter(JwtTokenUtils jwtTokenUtils) {
+    public JwtTokenFilter(JwtTokenUtils jwtTokenUtils,
+                          JpaUserDetailsManager userDetailsManager) {
         this.jwtTokenUtils = jwtTokenUtils;
+        this.userDetailsManager = userDetailsManager;
     }
 
     @Override
@@ -45,10 +49,14 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                         .parseClaims(token)
                         .getSubject();
                 // 사용자 인증 정보 생성
+                UserDetails userDetails =
+                        userDetailsManager.loadUserByUsername(username);
+
                 AbstractAuthenticationToken authenticationToken
                         = new UsernamePasswordAuthenticationToken(
-                        username,
-                        token, new ArrayList<>()
+                        userDetails,
+                        token,
+                        userDetails.getAuthorities()
                 );
                 context.setAuthentication(authenticationToken);
                 SecurityContextHolder.setContext(context);

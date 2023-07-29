@@ -18,7 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 @Slf4j
-@Controller
+@RestController
 @RequestMapping("/users")
 public class UserController {
     // 의존성 주입
@@ -60,26 +60,28 @@ public class UserController {
 //        return response;
 //    }
     @PostMapping("/register")
-    public String registerPost(
+    public ResponseDto registerPost(
             @RequestParam("username") String username,
             @RequestParam("password") String password,
             @RequestParam("password-check") String passwordCheck
     ) {
+        ResponseDto response = new ResponseDto();
+
         if (password.equals(passwordCheck)) {
             log.info("password match!");
-            // username 중복도 확인해야 하지만,
-            // 이 부분은 Service 에서 진행하는 것도 나쁘지 않아보임
-    //            manager.createUser(User.withUsername(username)
-    //                    .password(passwordEncoder.encode(password))
-    //                    .build());
+
             manager.createUser(CustomUserDetails.builder()
                     .username(username)
                     .password(passwordEncoder.encode(password))
                     .build());
 
-            return "redirect:/users/login";
+
+            response.setMessage("가입이 완료되었습니다.");
+            return response;
         }
         log.warn("password does not match...");
-        return "redirect:/users/register?error";
-}
+        response.setMessage("입력한 정보가 틀렸습니다.");
+        return response;
+
+    }
 }

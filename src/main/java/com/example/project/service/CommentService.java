@@ -3,6 +3,7 @@ package com.example.project.service;
 
 
 import com.example.project.entity.ItemEntity;
+import com.example.project.entity.UserEntity;
 import com.example.project.exceptions.IncorrectPasswordException;
 import com.example.project.exceptions.ItemNotFoundException;
 import com.example.project.repository.CommentRepository;
@@ -11,35 +12,56 @@ import com.example.project.entity.CommentEntity;
 import com.example.project.repository.ItemRepository;
 import com.example.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class CommentService {
     private final ItemRepository itemRepository;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     // POST
     // 댓글 생성
-    public CommentDto createComment(Long id, CommentDto dto) {
-        if (!itemRepository.existsById(id))
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    public CommentDto createComment(Long id, String username, String password, CommentDto dto) {
+        Optional<UserEntity> user = userRepository.findByUsername(username);
 
-        CommentEntity newComment = new CommentEntity();
-        newComment.setWriter(dto.getWriter());
-        newComment.setContent(dto.getContent());
-        newComment.setPassword(dto.getPassword());
-        newComment = commentRepository.save(newComment);
-        return CommentDto.fromEntity(newComment);
+        if (user.isPresent()) {
+            UserEntity userEntity = user.get();
+            String storedPw = userEntity.getPassword();
+            String storedId = userEntity.getUsername();
+            log.info(storedId);
+            log.info(storedPw);
+
+            if (passwordEncoder.matches(password, storedPw)) {
+
+                if (!itemRepository.existsById(id))
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+                CommentEntity newComment = new CommentEntity();
+                newComment.setContent(dto.getContent());
+                newComment.setUsername(storedId);
+                newComment = commentRepository.save(newComment);
+                return CommentDto.fromEntity(newComment);
+            } else {
+                throw new IncorrectPasswordException();
+            }
+        } else {
+            throw new UsernameNotFoundException(username);
+        }
     }
 
     // GET
@@ -47,6 +69,7 @@ public class CommentService {
     public Page<CommentDto> readCommentPaged(Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(
                 pageNum, pageSize, Sort.by("commentId").ascending());
+
         Page<CommentEntity> commentEntityPage = commentRepository.findAll(pageable);
         Page<CommentDto> commentDtoPage = commentEntityPage.map(CommentDto::fromEntity);
         return commentDtoPage;

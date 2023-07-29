@@ -1,9 +1,7 @@
 package com.example.project.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,4 +32,8 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     private List<CommentEntity> comments = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles")
+    private List<RoleEntity> roles = new ArrayList<>();
 }

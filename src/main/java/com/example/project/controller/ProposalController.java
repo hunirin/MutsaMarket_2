@@ -19,11 +19,11 @@ public class ProposalController {
     // POST
     @PostMapping
     public ResponseDto create(
-            @PathVariable("itemId") Long itemId,
+            @PathVariable("id") Long id,
             @RequestBody ProposalDto proposalDto
     ) {
         ResponseDto response = new ResponseDto();
-        service.createProposal(itemId, proposalDto);
+        service.createProposal(id, proposalDto);
         response.setMessage("구매 제안이 등록되었습니다.");
         return response;
     }
