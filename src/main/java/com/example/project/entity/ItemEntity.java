@@ -1,6 +1,5 @@
 package com.example.project.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,9 +12,6 @@ public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-//    private String writer;
-//    private String password;
 
     private String username;
 

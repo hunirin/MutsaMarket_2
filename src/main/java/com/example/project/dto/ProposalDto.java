@@ -12,6 +12,7 @@ public class ProposalDto {
     private Long proposalId;
 
     private String username;
+
     private String suggestedPrice;
     private String status;
 

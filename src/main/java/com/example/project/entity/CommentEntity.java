@@ -1,6 +1,5 @@
 package com.example.project.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,10 +11,6 @@ public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
     private Long itemId;
-
-    // 나중에 삭제해야함
-    private String writer;
-    private String password;
 
     private String content;
     private String reply;

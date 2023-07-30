@@ -1538,116 +1538,110 @@
       <DasType>bigint|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="539" parent="507" name="password">
+    <column id="539" parent="507" name="status">
       <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="540" parent="507" name="status">
+    <column id="540" parent="507" name="suggested_price">
       <DasType>varchar(255)|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="541" parent="507" name="suggested_price">
+    <column id="541" parent="507" name="username">
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="542" parent="507" name="writer">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>8</Position>
-    </column>
-    <key id="543" parent="507">
+    <key id="542" parent="507">
       <ColNames>proposal_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="544" parent="508" name="authorities_id">
+    <column id="543" parent="508" name="authorities_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="545" parent="508" name="roles_id">
+    <column id="544" parent="508" name="roles_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="546" parent="509" name="id">
+    <column id="545" parent="509" name="id">
       <DasType>integer|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="547" parent="509" name="name">
+    <column id="546" parent="509" name="name">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <key id="548" parent="509">
+    <key id="547" parent="509">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="549" parent="510" name="type">
+    <column id="548" parent="510" name="type">
       <DasType>TEXT|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="550" parent="510" name="name">
+    <column id="549" parent="510" name="name">
       <DasType>TEXT|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="551" parent="510" name="tbl_name">
+    <column id="550" parent="510" name="tbl_name">
       <DasType>TEXT|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="552" parent="510" name="rootpage">
+    <column id="551" parent="510" name="rootpage">
       <DasType>INT|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="553" parent="510" name="sql">
+    <column id="552" parent="510" name="sql">
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="554" parent="511" name="roles_id">
+    <column id="553" parent="511" name="roles_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="555" parent="511" name="users_id">
+    <column id="554" parent="511" name="users_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="556" parent="512" name="id">
+    <column id="555" parent="512" name="id">
       <DasType>integer|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="557" parent="512" name="address">
+    <column id="556" parent="512" name="address">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="558" parent="512" name="email">
+    <column id="557" parent="512" name="email">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="559" parent="512" name="password">
+    <column id="558" parent="512" name="password">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="560" parent="512" name="phone">
+    <column id="559" parent="512" name="phone">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="561" parent="512" name="username">
+    <column id="560" parent="512" name="username">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <index id="562" parent="512" name="sqlite_autoindex_users_1">
+    <index id="561" parent="512" name="sqlite_autoindex_users_1">
       <ColNames>username</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="563" parent="512">
+    <key id="562" parent="512">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="564" parent="512">
+    <key id="563" parent="512">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_users_1</UnderlyingIndexName>
     </key>

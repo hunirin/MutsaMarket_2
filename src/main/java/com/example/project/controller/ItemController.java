@@ -78,11 +78,10 @@ public class ItemController {
             // writer와 password는 Content type을 application/json으로 해서 받음
             @RequestParam("username") String username,
             @RequestParam("password") String password,
-            @RequestPart(value = "itemDto")ItemDto itemDto,
             @RequestPart(value = "image", required = false) MultipartFile itemImage
     ) {
 
-        service.updateItemImage(id, username, password, itemDto, itemImage);
+        service.updateItemImage(id, username, password, itemImage);
         ResponseDto response = new ResponseDto();
         response.setMessage("이미지가 등록되었습니다.");
         return response;

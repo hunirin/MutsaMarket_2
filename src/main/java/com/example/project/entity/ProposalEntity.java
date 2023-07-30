@@ -1,12 +1,7 @@
 package com.example.project.entity;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-
-import java.util.List;
 
 @Data
 @Entity
@@ -18,6 +13,7 @@ public class ProposalEntity {
     private Long itemId;
 
     private String username;
+
     private String status;
     private String suggestedPrice;
 

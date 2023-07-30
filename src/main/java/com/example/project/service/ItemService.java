@@ -1,9 +1,7 @@
 package com.example.project.service;
 
 
-import com.example.project.dto.CustomUserDetails;
 import com.example.project.dto.ItemDto;
-//import com.example.project.dto.UserDto;
 import com.example.project.entity.ItemEntity;
 import com.example.project.entity.UserEntity;
 import com.example.project.exceptions.IncorrectPasswordException;
@@ -19,7 +17,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -115,13 +112,14 @@ public class ItemService {
     }
 
     // updateImage: 이미지 첨부
-    public ItemDto updateItemImage(Long id, String username, String password, ItemDto dto, MultipartFile itemImage) {
+    public ItemDto updateItemImage(Long id, String username, String password, MultipartFile itemImage) {
         // 물품 존재 확인
         Optional<ItemEntity> optionalItem = repository.findById(id);
         if (optionalItem.isEmpty()) throw new ItemNotFoundException();
 
         ItemEntity itemEntity = optionalItem.get();
 
+        ItemDto dto = new ItemDto();
 
         Optional<UserEntity> user = userRepository.findByUsername(username);
 

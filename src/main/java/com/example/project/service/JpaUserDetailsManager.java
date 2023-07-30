@@ -24,7 +24,6 @@ import static org.hibernate.cfg.AvailableSettings.USER;
 
 @Slf4j
 @Service
-// UserDetailsManager의 구현체로 만들면, Spring Security Filter에서 사용자 정보 회수에 활요할 수 있다.
 public class JpaUserDetailsManager implements UserDetailsManager {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -61,23 +60,9 @@ public class JpaUserDetailsManager implements UserDetailsManager {
         adminRole.getAuthorities().add(writeAuthority);
         adminRole = roleRepository.save(adminRole);
 
-        // USER 역할 사용자 생성
-        UserEntity user = new UserEntity();
-        user.setUsername("user");
-        user.setPassword(passwordEncoder.encode("asdf"));
-        user.getRoles().add(userRole);
-        userRepository.save(user);
-
-        // ADMIN 역할 사용자 생성
-        UserEntity admin = new UserEntity();
-        admin.setUsername("admin");
-        admin.setPassword(passwordEncoder.encode("asdf"));
-        admin.getRoles().add(adminRole);
-        userRepository.save(admin);
     }
 
     @Override
-    // UserDetailsService.loadUserByUsername(String)
     // 실제로 Spring Security 내부에서 사용하는 반드시 구현해야 정상동작을 기대할 수 있는 메소드
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserEntity> optionalUser
@@ -88,17 +73,10 @@ public class JpaUserDetailsManager implements UserDetailsManager {
     }
 
     @Override
-    // 새로운 사용자를 저장하는 메소드 (선택)
+    // 새로운 사용자를 저장하는 메소드
     public void createUser(UserDetails user) {
         log.info("try create user: {}", user.getUsername());
-        // 사용자가 (이미) 있으면 생성할수 없다.
-//        if (this.userExists(user.getUsername()))
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-//        try {
-//            CustomUserDetails customUserDetails = (CustomUserDetails) user;
-//            customUserDetails.getRole(Collections.singletonList("USER"));
-//            userRepository.save(
-//                    ((CustomUserDetails) user).newEntity());
+
         if (this.userExists(user.getUsername())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
@@ -107,14 +85,12 @@ public class JpaUserDetailsManager implements UserDetailsManager {
             CustomUserDetails customUserDetails = (CustomUserDetails) user;
             UserEntity userEntity = customUserDetails.newEntity();
 
-            // Find the role entity for "USER"
             RoleEntity userRole = roleRepository.findByName("USER");
             if (userRole == null) {
-                // If the "USER" role doesn't exist in the database, you might need to create it or handle the situation accordingly.
+
                 throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
-            // Set the authorities (roles) for the user entity
             userEntity.setRoles(Collections.singletonList(userRole));
 
             userRepository.save(userEntity);
@@ -125,7 +101,7 @@ public class JpaUserDetailsManager implements UserDetailsManager {
     }
 
     @Override
-    // 계정이름을 가진 사용자가 존재하는지 확인하는 메소드 (선택)
+    // 계정이름을 가진 사용자가 존재하는지 확인하는 메소드
     public boolean userExists(String username) {
         log.info("check if user: {} exists", username);
         return this.userRepository.existsByUsername(username);

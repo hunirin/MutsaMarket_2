@@ -1,8 +1,6 @@
 package com.example.project.service;
 
 import com.example.project.dto.ProposalDto;
-import com.example.project.entity.CommentEntity;
-import com.example.project.entity.ItemEntity;
 import com.example.project.entity.ProposalEntity;
 import com.example.project.entity.UserEntity;
 import com.example.project.exceptions.IncorrectPasswordException;

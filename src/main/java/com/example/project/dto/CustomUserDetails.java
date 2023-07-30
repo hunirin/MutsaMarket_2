@@ -2,14 +2,11 @@ package com.example.project.dto;
 
 import com.example.project.entity.RoleEntity;
 import com.example.project.entity.UserEntity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
+
 
 import java.util.ArrayList;
 import java.util.Collection;
