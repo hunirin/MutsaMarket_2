@@ -26,7 +26,7 @@
 4. ```POST /token/issue```로 JWT를 발급받음
 5. 이후 ```Params```에 username, password를 입력, ```Auth```에서 Bearer Token에 token에 JWT를 넣고 사용
 
- ## ✅ Update ( ~ 23.07.30 ) 
+ ## ✅ Update ( 1일차 ~ 3일차 ) 
    ( 🔹 추가 / 🔸 수정 )
 ### 📂 config 
      🔹 PasswordEncoderConfig : 비밀번호를 암호화하기위한 config
