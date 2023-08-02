@@ -112,3 +112,15 @@ table a {
     color: #ffffff;
     border-radius: 20px;
 }
+.btn-d {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 20px 20px 40px 20px;
+    padding: 10px;
+    background-color: tomato;
+    font-size: 15px;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+}

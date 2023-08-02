@@ -9,7 +9,7 @@
 </head>
 <body>
 <section class = "item">
-    <form action="/view/itemOne/{id}" method="get">
+<!--    <form action="/view/itemOne/{id}" method="get">-->
         <div class="card">
             <div class ="card-header"><h1><a href="/view/home">멋사 마켓</a></h1></div>
             <div class="card-body">
@@ -33,12 +33,14 @@
                     </tr>
                     </thead>
                 </table>
+                <form th:each="item : ${items}" th:action="@{/view/itemOne/{id}(id=${item.id})}" th:method="delete">
+                    <button class="btn-d" type="submit">삭제</button>
+                </form>
             </div>
         </div>
-    </form>
-    <form th:each="item : ${items}" th:action="@{/view/itemOne/{id}(id=${item.id})}" th:method="delete">
-        <button class="btn btn-primary" type="submit">삭제</button>
-    </form>
+<!--    </form>-->
+
+
 </section>
 </body>
 </html>

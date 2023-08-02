@@ -4,40 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 4일차&#10;- 로그인 페이지 view controller로 연결시킴">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/itemList.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/register.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/write.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/item.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/itemsList.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/register-form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/write.html" afterDir="false" />
+    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: html 구현&#10;- 물품 등록&#10;- 물품 전체 조회&#10;- 물품 조회&#10;- 물품 삭제&#10;- 로그아웃">
       <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/451d5f04-3ff0-4663-a923-3daa47cde109.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/example/miniproject_basic_leegwnaghun/MiniProjectBasicLeeGwnaghunApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/dto/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/dto/CustomUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/dto/ItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/entity/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/entity/ItemEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/repository/ItemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/items-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/my-profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/my-profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/item.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/item.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/item.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/item.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +181,7 @@
       <workItem from="1690590485919" duration="8551000" />
       <workItem from="1690763060819" duration="41406000" />
       <workItem from="1690934977681" duration="11921000" />
-      <workItem from="1690953320672" duration="302000" />
+      <workItem from="1690953320672" duration="2418000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 초기 설정">
       <created>1688014641050</created>
@@ -375,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690781694731</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat: html 구현&#10;- 물품 등록&#10;- 물품 전체 조회&#10;- 물품 조회&#10;- 물품 삭제&#10;- 로그아웃">
+      <created>1690954080820</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1690954080820</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,6 +397,7 @@
     <MESSAGE value="feat: 3일차&#10;- comment 수정 시작&#10;- writer 대신 username이 뜨게 대체" />
     <MESSAGE value="feat: 3일차&#10;- comments까지 로그인 구현완료" />
     <MESSAGE value="feat: 4일차&#10;- 로그인 페이지 view controller로 연결시킴" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 4일차&#10;- 로그인 페이지 view controller로 연결시킴" />
+    <MESSAGE value="feat: html 구현&#10;- 물품 등록&#10;- 물품 전체 조회&#10;- 물품 조회&#10;- 물품 삭제&#10;- 로그아웃" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: html 구현&#10;- 물품 등록&#10;- 물품 전체 조회&#10;- 물품 조회&#10;- 물품 삭제&#10;- 로그아웃" />
   </component>
 </project>
