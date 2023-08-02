@@ -169,6 +169,6 @@ public class ViewController {
     public String itemDelete(@PathVariable("id") Long id) {
         itemRepository.deleteById(id);
         System.out.println(id);
-        return "itemsList";
+        return "redirect:/view/itemsList";
     }
 }
