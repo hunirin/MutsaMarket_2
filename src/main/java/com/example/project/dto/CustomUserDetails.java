@@ -25,6 +25,8 @@ public class CustomUserDetails implements UserDetails {
     private String email;
     @Getter
     private String phone;
+    @Getter
+    private String address;
 
     private List<GrantedAuthority> authorities;
 
@@ -83,6 +85,7 @@ public class CustomUserDetails implements UserDetails {
                 .password(entity.getPassword())
                 .email(entity.getEmail())
                 .phone(entity.getPhone())
+                .address(entity.getAddress())
                 .authorities(authorities)
                 .build();
     }
@@ -93,6 +96,7 @@ public class CustomUserDetails implements UserDetails {
         entity.setPassword(password);
         entity.setEmail(email);
         entity.setPhone(phone);
+        entity.setAddress(address);
         return entity;
     }
 
@@ -104,6 +108,7 @@ public class CustomUserDetails implements UserDetails {
                 ", password='[PROTECTED]'" +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

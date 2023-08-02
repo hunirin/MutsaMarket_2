@@ -32,4 +32,6 @@ public class ItemEntity {
     @OneToMany
     @JoinColumn(name = "comment")
     private List<CommentEntity> comments;
+
+
 }

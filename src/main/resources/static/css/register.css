@@ -7,20 +7,20 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /*background-color: #EBEFF5 ;*/
-    background: url("newyork.jpg") no-repeat center;
+    background-color: #EBEFF5 ;
+    /*background: url("newyork.jpg") no-repeat center;*/
     background-size: cover;
 }
 body::before {
     content: "";
     position: absolute; z-index: 1;
     top:0; right: 0; bottom: 0; left: 0;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0,0,0,.8);
 }
 
-.login-form {position: relative; z-index: 2;}
-.login-form h1 {
-    font-size: 40px; color: #fff;
+.register-form {position: relative; z-index: 2;}
+.register-form h1 {
+    font-size: 60px; color: #fff;
     text-align: center;
     margin-bottom: 60px;
 }
@@ -54,8 +54,8 @@ body::before {
     50% {transform: translateX(-8px);}
     75% {transform: translateX(8px);}
 }
-.int-area input:focus + label,
-.int-area input:valid + label {
+.int-area input:valid + label,
+.int-area input:focus + label {
     top: -2px;
     font-size: 11px; color: #166cea;
 }

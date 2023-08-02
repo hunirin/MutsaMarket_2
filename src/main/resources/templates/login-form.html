@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Login Page</title>
     <link rel="stylesheet" href="/static/css/login.css" >
-     <script src="../static/js/jquery-3.4.1.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
     <section class = "login-form">
@@ -21,11 +21,31 @@
                 <label for="password">PASSWORD</label>
             </div>
             <div class="btn-area">
-                <button type="submit">LOGIN</button>
+                <button id="btn" type="submit">LOGIN</button>
             </div>
             <div class="caption">
                 <a href="/view/register">Register</a>
             </div>
+            <script>
+                let username = $('#username');
+                let password = $('#password');
+                let btn = $('#btn');
+
+                $(btn).on('click', function () {
+                    if($(username).val() === "") {
+                        $(username).next('label').addClass('warning');
+                        setTimeout(function () {
+                            $('label').removeClass('warning')
+                        },1500);
+                    }
+                    else if($(password).val() === "") {
+                        $(password).next('label').addClass('warning');
+                        setTimeout(function () {
+                            $('label').removeClass('warning')
+                        }, 1500);
+                    }
+                });
+            </script>
         </form>
     </section>
 

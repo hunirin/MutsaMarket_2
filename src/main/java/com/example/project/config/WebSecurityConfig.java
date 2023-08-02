@@ -26,17 +26,10 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable();
         http
-                // CSRF: Cross Site Request Forgery
                 .csrf(AbstractHttpConfigurer::disable)
-                // 1. requestMatchers를 통해 설정할 URL 지정
-                // 2. permitAll(), authenticated() 등을 통해 어떤 사용자가
-                //    접근 가능한지 설정
                 .authorizeHttpRequests(
-                        authHttp -> authHttp // HTTP 요청 허가 관련 설정을 하고 싶다.
-                                // requestMatchers == 어떤 URL로 오는 요청에 대하여 설정하는지
-                                // permitAll() == 누가 요청해도 허가한다.
+                        authHttp -> authHttp
                                 .requestMatchers(
                                         "/no-auth",
                                         "/token/issue",
@@ -46,7 +39,8 @@ public class WebSecurityConfig {
                                         "/items/{id}/comments/read",
                                         "/items/{id}/proposal/read",
                                         "/view/login",
-                                        "/resources/**"
+                                        "/resources/**",
+                                        "/view/register"
                                 )
                                 .permitAll()
 //                                .requestMatchers(
@@ -61,32 +55,27 @@ public class WebSecurityConfig {
                                 // 로그인 하는 페이지(경로)를 지정
                                 .loginPage("/view/login")
                                 // 로그인 성공시 이동하는 페이지(경로)
-                                .defaultSuccessUrl("/view/items-form")
+                                .successHandler((request, response, authentication) -> {
+                                    response.sendRedirect("/view/home"); // Redirect to your desired URL
+                                })
+//                                .defaultSuccessUrl("/view/my-profile")
                                 // 로그인 실패시 이동하는 페이지(경로)
                                 .failureUrl("/view/login?fail")
+//                                .usernameParameter("username")
+//                                .passwordParameter("password")
                                 // 로그인 과정에서 필요한 경로들을
                                 // 모든 사용자가 사용할 수 있게끔 권한설정
                                 .permitAll()
                 )
-                // 로그아웃 관련 설정
-                // 로그인 -> 쿠키를 통해 세션을 생성
-                //          아이디와 비밀번호
-                // 로그아웃 -> 세션을 제거
-                //            세션 정보만 있으면 제거 가능
                 .logout(
                         logout -> logout
-                                // 로그아웃 요청을 보낼 URL
-                                // 어떤 UI에 로그아웃 기능을 연결하고 싶으면
-                                // 해당 UI가 /users/logout으로 POST 요청을
-                                // 보내게끔
                                 .logoutUrl("/view/logout")
-                                // 로그아웃 성공시 이동할 URL 설정
                                 .logoutSuccessUrl("/view/login")
                 )
-                .sessionManagement(
-                        sessionManagement -> sessionManagement
-                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
+//                .sessionManagement(
+//                        sessionManagement -> sessionManagement
+//                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                )
                 .addFilterBefore(
                         jwtTokenFilter,
                         AuthorizationFilter.class

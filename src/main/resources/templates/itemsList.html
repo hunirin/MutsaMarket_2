@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/css/itemList.css">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+</head>
+<body>
+<section class = "index">
+    <form action="/view/itemList" method="get">
+    <div class="card">
+        <div class ="card-header"><h1><a href="/view/home">멋사 마켓</a></h1></div>
+        <div class="card-body">
+            <table id="itemTable">
+<!--                <form class="form-inline d-flex justify-content-end" method="GET", th:action="@{itemList}" th:value="${param.searchText}">-->
+<!--                    <div class="form-group mx-sm-3 mb-2 pull-right">-->
+<!--                        <label for="searchText" class="sr-only">검색</label>-->
+<!--                        <input type="text" class="form-control" id="searchText" name="searchText">-->
+<!--                        <button type="submit" class="btn btn-primary mb-2">검색 </button>-->
+<!--                    </div>-->
+<!--                </form>-->
+                <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>상태</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${items}">
+                    <td><a th:href="@{'/view/itemOne/' + ${item.id}}"><span th:text="${item.id}"></span></a></td>
+                    <td><a th:href="@{'/view/itemOne/' + ${item.id}}"><span th:text="${item.title}"></span></a></td>
+                    <td th:text="${item.username}"></td>
+                    <td th:text="${item.status}"></td>
+                </tr>
+                </tbody>
+            </table>
+      </div>
+    </div>
+    </form>
+</section>
+</body>
+</html>

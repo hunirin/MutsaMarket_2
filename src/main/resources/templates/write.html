@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>물품 등록</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<section class = "write">
+    <form action="/view/write" method="post">
+    <div class="card">
+        <div class="card-header1">
+            <h1><a href="index.html">멋사 마켓</a></h1>
+        </div>
+
+        <div class="card-write">
+            <div class="title-w">
+                제목<input type="text" id="title" name="title" autocomplete="off" required placeholder="제목을 입력하세요.">
+            </div>
+            <div class="minPrice">
+                최소 가격<input type="text" id="minPrice" name="minPrice" autocomplete="off" required placeholder="최소 가격을 입력하세요.">
+            </div>
+            <div class="msg">
+                내용<input type="text" id="content" name="content" autocomplete="off" required placeholder="내용을 입력하세요.">
+                <input type="file" name="image" id="image">
+            </div>
+        </div>
+        <div class="btn-w">
+            <button id="btn" type="submit">등록</button>
+        </div>
+    </div>
+    </form>
+</section>
+</body>
+</html>

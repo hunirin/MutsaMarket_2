@@ -30,6 +30,9 @@ spring:
 
   mvc:
     static-path-pattern: "/static/**"
+    hiddenmethod:
+      filter:
+        enabled: true
 
   web:
     resources:
