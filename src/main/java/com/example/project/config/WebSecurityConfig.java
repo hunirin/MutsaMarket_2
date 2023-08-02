@@ -43,12 +43,13 @@ public class WebSecurityConfig {
                                         "/view/register"
                                 )
                                 .permitAll()
+//                                USER 권한
 //                                .requestMatchers(
 //                                        "/**"
 //                                )
 //                                .hasRole("USER")
                                 .anyRequest()
-                                .authenticated()
+                                .authenticated() // 인증된 사용자만 가능
                 )
                 .formLogin(
                         formLogin -> formLogin
@@ -56,13 +57,10 @@ public class WebSecurityConfig {
                                 .loginPage("/view/login")
                                 // 로그인 성공시 이동하는 페이지(경로)
                                 .successHandler((request, response, authentication) -> {
-                                    response.sendRedirect("/view/home"); // Redirect to your desired URL
+                                    response.sendRedirect("/view/home");
                                 })
-//                                .defaultSuccessUrl("/view/my-profile")
                                 // 로그인 실패시 이동하는 페이지(경로)
                                 .failureUrl("/view/login?fail")
-//                                .usernameParameter("username")
-//                                .passwordParameter("password")
                                 // 로그인 과정에서 필요한 경로들을
                                 // 모든 사용자가 사용할 수 있게끔 권한설정
                                 .permitAll()
@@ -72,10 +70,6 @@ public class WebSecurityConfig {
                                 .logoutUrl("/view/logout")
                                 .logoutSuccessUrl("/view/login")
                 )
-//                .sessionManagement(
-//                        sessionManagement -> sessionManagement
-//                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                )
                 .addFilterBefore(
                         jwtTokenFilter,
                         AuthorizationFilter.class

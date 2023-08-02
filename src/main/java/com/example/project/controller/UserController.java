@@ -33,7 +33,7 @@ public class UserController {
             @RequestParam("password-check") String passwordCheck
     ) {
         ResponseDto response = new ResponseDto();
-
+        // 비밀번호가 일치할 시 UserDetailsManager를 통해 유저 등록
         if (password.equals(passwordCheck)) {
             log.info("password match!");
 
@@ -41,7 +41,6 @@ public class UserController {
                     .username(username)
                     .password(passwordEncoder.encode(password))
                     .build());
-
 
             response.setMessage("가입이 완료되었습니다.");
             return response;

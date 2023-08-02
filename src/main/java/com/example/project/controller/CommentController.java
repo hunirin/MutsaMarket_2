@@ -43,6 +43,7 @@ public class CommentController {
     }
 
     // PUT
+    // 댓글 수정
     @PutMapping("/{commentId}")
     public ResponseDto update(
             @PathVariable("commentId") Long commentId,

@@ -33,12 +33,13 @@ public class ViewController {
     private final ItemRepository itemRepository;
 
 
-
+    // 로그인화면 불러오기
     @GetMapping("/login")
     public String loginForm() {
         return "login-form";
     }
 
+    // 로그인 화면
     @PostMapping("/login")
     public JwtTokenDto loginJwt(
             @RequestBody CustomUserDetails dto
@@ -46,10 +47,11 @@ public class ViewController {
     ) {
         UserDetails userDetails = manager.loadUserByUsername(dto.getUsername());
 
+        // 비밀번호가 다르면 에러
         if (!passwordEncoder.matches(dto.getPassword(), userDetails.getPassword())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
-
+        // 로그인 시 토큰 발급
         String token = jwtTokenUtils.generateToken(userDetails);
 
         JwtTokenDto response = new JwtTokenDto();
@@ -59,10 +61,12 @@ public class ViewController {
 
     }
 
+    // 회원가입 화면 불러오기
     @GetMapping("/register")
     public String registerForm() {
         return "register-form";
     }
+
 
     @PostMapping("/register")
     public String registerPost(
@@ -73,7 +77,8 @@ public class ViewController {
             @RequestParam("email") String email,
             @RequestParam("address") String address
     ) {
-        // TODO 사용자가 입력한 아이디 비밀번호 비밀번호 확인 값을 확인해보세요.
+        // 비밀번호 일치시 유저 등록
+        // phone, email, address는 필수 아님
         if (password.equals(passwordCheck)) {
             log.info("password match!");
             manager.createUser(CustomUserDetails.builder()
@@ -89,16 +94,19 @@ public class ViewController {
         return "redirect:/view/register?error";
     }
 
+    // 홈화면 불러오기
     @GetMapping("/home")
     public String itemsHome() {
         return "index";
     }
 
+    // 물품 등록 불러오기
     @GetMapping("/write")
     public String itemWrite() {
         return "write";
     }
 
+    // 물품 등록
     @PostMapping("/write")
     public String itemPost(
             @RequestParam("title") String title,
@@ -106,9 +114,11 @@ public class ViewController {
             @RequestParam("minPrice") String minPrice,
             @RequestPart(value = "image", required = false) MultipartFile image
     ) {
+        // Spring Security에 등록된 username 불러오기
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = (UserDetails) principal;
         String username = userDetails.getUsername();
+
         ItemEntity newItem = new ItemEntity();
         newItem.setTitle(title);
         newItem.setContent(content);
@@ -117,6 +127,7 @@ public class ViewController {
 
         itemRepository.save(newItem);
 
+        // 테스트
         System.out.println("title " + title);
         System.out.println("content " + content);
         System.out.println("minPrice " + minPrice);
@@ -125,19 +136,7 @@ public class ViewController {
         return "redirect:/view/home" ;
     }
 
-    @GetMapping("/itemsList/{id}")
-    public String itemsOne(@PathVariable("id") Long id, Model model) {
-        ItemEntity itemEntity = itemRepository.findById(id).orElse(null);
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDetails userDetails = (UserDetails) principal;
-        String username = userDetails.getUsername();
-
-        model.addAttribute(username);
-        model.addAttribute("item", itemEntity);
-
-        return "itemsList";
-    }
-
+    // 물품 목록 불러오기
     @GetMapping("/itemsList")
     public String itemsList(
             Model model,
@@ -156,6 +155,7 @@ public class ViewController {
         return "itemsList";
     }
 
+    // 물품 조회 (개별)
     @GetMapping("/itemOne/{id}")
     public String itemTest(@PathVariable("id") Long id, Model model) {
         ItemEntity items = itemRepository.findById(id).get();
@@ -164,6 +164,7 @@ public class ViewController {
         return "item";
     }
 
+    // 물품 삭제 (버튼 클릭 시)
     @DeleteMapping("/itemOne/{id}")
     public String itemDelete(@PathVariable("id") Long id) {
         itemRepository.deleteById(id);
