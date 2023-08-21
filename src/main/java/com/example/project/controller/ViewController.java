@@ -144,12 +144,12 @@ public class ViewController {
             @RequestParam(required = false, defaultValue = "") String searchText
     ) {
 
-        Page<ItemEntity> items = itemRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
-        int startPage = Math.max(1, items.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(items.getTotalPages(), items.getPageable().getPageNumber() + 3);
+        Page<ItemEntity> itemsdd = itemRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
+        int startPage = Math.max(1, itemsdd.getPageable().getPageNumber() - 1);
+        int endPage = Math.min(itemsdd.getTotalPages(), itemsdd.getPageable().getPageNumber() + 3);
 
 
-        model.addAttribute("items", items);
+        model.addAttribute("itemsdd", itemsdd);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         return "itemsList";

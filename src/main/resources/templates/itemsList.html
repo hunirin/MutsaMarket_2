@@ -30,7 +30,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="item : ${items}">
+                <tr th:each="item : ${itemsdd}">
                     <td><a th:href="@{'/view/itemOne/' + ${item.id}}"><span th:text="${item.id}"></span></a></td>
                     <td><a th:href="@{'/view/itemOne/' + ${item.id}}"><span th:text="${item.title}"></span></a></td>
                     <td th:text="${item.username}"></td>

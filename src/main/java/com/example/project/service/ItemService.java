@@ -163,7 +163,7 @@ public class ItemService {
                 // ItemEntity 업데이트
                 log.info(String.format("/static/%d/%s", id, itemImageFilename));
 
-                itemEntity.setImage(String.format("/static/%d%s", id, itemImageFilename));
+                itemEntity.setImage(String.format("/static/%d/%s", id, itemImageFilename));
                 return dto.fromEntity(repository.save(itemEntity));
             } else throw new IncorrectPasswordException();
         } else {

@@ -34,7 +34,6 @@ public class WebSecurityConfig {
                                         "/no-auth",
                                         "/token/issue",
                                         "/users/register",
-                                        "/items/read",
                                         "/items/read/**",
                                         "/items/{id}/comments/read",
                                         "/items/{id}/proposal/read",

@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: 주석수정">
+    <list default="true" id="12472a96-7f61-4c76-b01b-d256a36ba1e0" name="Changes" comment="feat: ViewController 수정&#10;- delete 엔드포인트 수정">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project/service/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/itemsList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/itemsList.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +185,21 @@
       <workItem from="1690934977681" duration="11921000" />
       <workItem from="1690953320672" duration="4414000" />
       <workItem from="1690958431106" duration="24000" />
-      <workItem from="1690962859921" duration="2420000" />
+      <workItem from="1690962859921" duration="3833000" />
+      <workItem from="1691023767547" duration="14747000" />
+      <workItem from="1691108555285" duration="7307000" />
+      <workItem from="1691231425975" duration="604000" />
+      <workItem from="1691285576080" duration="2746000" />
+      <workItem from="1691319233497" duration="1489000" />
+      <workItem from="1691365348769" duration="4831000" />
+      <workItem from="1691452475462" duration="1226000" />
+      <workItem from="1691487706843" duration="600000" />
+      <workItem from="1691559443654" duration="18000" />
+      <workItem from="1691911753442" duration="432000" />
+      <workItem from="1691913411579" duration="19000" />
+      <workItem from="1692159294732" duration="5244000" />
+      <workItem from="1692316865271" duration="1466000" />
+      <workItem from="1692594399697" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 초기 설정">
       <created>1688014641050</created>
@@ -368,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690956975699</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="feat: ViewController 수정&#10;- delete 엔드포인트 수정">
+      <created>1690967386843</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1690967386843</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,6 +439,7 @@
     <MESSAGE value="feat: html 구현&#10;- 물품 등록&#10;- 물품 전체 조회&#10;- 물품 조회&#10;- 물품 삭제&#10;- 로그아웃" />
     <MESSAGE value="feat: README 수정" />
     <MESSAGE value="feat: 주석수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 주석수정" />
+    <MESSAGE value="feat: ViewController 수정&#10;- delete 엔드포인트 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ViewController 수정&#10;- delete 엔드포인트 수정" />
   </component>
 </project>
